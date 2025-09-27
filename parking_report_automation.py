@@ -39,7 +39,7 @@ class ParkingReportAutomation:
         self.headless = headless
         self.browser: Optional[Browser] = None
         self.page: Optional[Page] = None
-        self.base_url = "https://secure.parkonect.com/Admin/Login.aspx" 
+        self.base_url = "https://secure.parkonect.com"
         
     async def setup_browser(self):
         """Setup Playwright browser and page"""
@@ -56,21 +56,31 @@ class ParkingReportAutomation:
         logger.info("Browser setup completed")
         
     async def login(self):
-        """Login to the parking management system"""
+        """Login to the parking management system (two-step process)"""
         try:
             logger.info("Attempting login...")
-            await self.page.goto(f"{self.base_url}")  # Update with actual login URL
+            await self.page.goto(f"{self.base_url}/Admin/Login.aspx")
             
-            # Fill in credentials
-            await self.page.fill('input[name="username"]', self.username)  # Update selector
-            await self.page.fill('input[name="password"]', self.password)  # Update selector
+            # Step 1: Enter username and click Continue
+            await self.page.fill('#txtUserName', self.username)
             
-            # Click login button
-            await self.page.click('button[type="submit"]')  # Update selector
+            # Click Continue button (selecting by value since ID is same as login)
+            await self.page.click('input[value="Continue"]')
             
-            # Wait for navigation or specific element that appears after login
+            # Wait for password field to appear
+            await self.page.wait_for_selector('#txtPassword', timeout=5000)
+            
+            # Step 2: Enter password
+            await self.page.fill('#txtPassword', self.password)
+            
+            # Click Login button
+            await self.page.click('input[value="Log in"]')
+            
+            # Wait for navigation to complete
             await self.page.wait_for_load_state('networkidle')
-            await self.page.wait_for_selector('.dashboard', timeout=10000)  # Update selector
+            
+            # Verify login by checking URL or element
+            await self.page.wait_for_url('**/Admin/**', timeout=10000)
             
             logger.info("Login successful")
             return True
@@ -84,8 +94,8 @@ class ParkingReportAutomation:
         try:
             logger.info("Navigating to reports...")
             
-            # Navigate to reports page - update URL/selectors as needed
-            await self.page.goto(f"{self.base_url}/reports/monthly-count")
+            # Direct URL to Monthly Count Report for Miami DD - Museum Garage (gid=1239)
+            await self.page.goto(f"{self.base_url}/Admin/Reporting.aspx?gid=1239&rpt=27")
             await self.page.wait_for_load_state('networkidle')
             
             logger.info("Successfully navigated to reports")
@@ -104,17 +114,17 @@ class ParkingReportAutomation:
             logger.info("Extracting account list...")
             
             # Wait for account dropdown to be present
-            await self.page.wait_for_selector('select#account')  # Update selector
+            await self.page.wait_for_selector('#ctl00_cphBody_ddlAccounts')
             
             # Get all options from the dropdown
             accounts = await self.page.evaluate('''
                 () => {
-                    const select = document.querySelector('select#account');
+                    const select = document.querySelector('#ctl00_cphBody_ddlAccounts');
                     const options = Array.from(select.options);
                     return options.map(opt => ({
                         value: opt.value,
                         text: opt.text
-                    })).filter(opt => opt.value !== '');  // Filter out empty/placeholder options
+                    })).filter(opt => opt.value !== '-1');  // Filter out "All Accounts" option
                 }
             ''')
             
@@ -160,19 +170,21 @@ class ParkingReportAutomation:
             logger.info(f"Generating report for {account_name} from {start_date} to {end_date}")
             
             # Select account
-            await self.page.select_option('select#account', value=account_value)  # Update selector
+            await self.page.select_option('#ctl00_cphBody_ddlAccounts', value=account_value)
             await asyncio.sleep(0.5)
             
-            # Set start date
-            await self.page.fill('input#start-date', start_date)  # Update selector
+            # Clear and set start date
+            await self.page.fill('#ctl00_cphBody_txtStartDate', '')
+            await self.page.fill('#ctl00_cphBody_txtStartDate', start_date)
             await asyncio.sleep(0.5)
             
-            # Set end date
-            await self.page.fill('input#end-date', end_date)  # Update selector
+            # Clear and set end date
+            await self.page.fill('#ctl00_cphBody_txtEndDate', '')
+            await self.page.fill('#ctl00_cphBody_txtEndDate', end_date)
             await asyncio.sleep(0.5)
             
             # Click Generate Report button
-            await self.page.click('button#generate-report')  # Update selector
+            await self.page.click('#ctl00_cphBody_btnGenarate')
             
             # Wait for report to load (approximately 5 seconds as mentioned)
             await asyncio.sleep(5)
@@ -203,7 +215,7 @@ class ParkingReportAutomation:
         """
         try:
             # Wait for table to be present
-            await self.page.wait_for_selector('table', timeout=10000)  # Update selector
+            await self.page.wait_for_selector('table', timeout=10000)
             
             # Extract table data using JavaScript
             table_data = await self.page.evaluate('''
@@ -216,12 +228,21 @@ class ParkingReportAutomation:
                     
                     return dataRows.map(row => {
                         const cells = Array.from(row.querySelectorAll('td'));
+                        
+                        // Extract text content, handling both plain text and hyperlinks
+                        const getText = (cell) => {
+                            if (!cell) return '';
+                            // Check if cell contains a link
+                            const link = cell.querySelector('a');
+                            return link ? link.innerText.trim() : cell.innerText.trim();
+                        };
+                        
                         return {
-                            start_time: cells[0]?.innerText?.trim() || '',
-                            end_time: cells[1]?.innerText?.trim() || '',
-                            entries: cells[2]?.innerText?.trim() || '0',
-                            exits: cells[3]?.innerText?.trim() || '0',
-                            manual_adjustments: cells[4]?.innerText?.trim() || '0'
+                            start_time: getText(cells[0]),
+                            end_time: getText(cells[1]),
+                            entries: getText(cells[2]) || '0',
+                            exits: getText(cells[3]) || '0',
+                            manual_adjustments: getText(cells[4]) || '0'
                         };
                     });
                 }
@@ -290,9 +311,7 @@ class ParkingReportAutomation:
             logger.error("Failed to navigate to reports, aborting...")
             return all_data
         
-        if not await self.select_garage():
-            logger.error("Failed to select garage, aborting...")
-            return all_data
+        # Note: Garage is already selected via URL parameter (gid=1239)
         
         # Get list of accounts
         accounts = await self.get_account_list()
@@ -355,18 +374,25 @@ class ParkingReportAutomation:
                         df = df[column_order]
                         
                         # Clean sheet name (Excel has limitations on sheet names)
-                        sheet_name = account_name[:31].replace('/', '-').replace('\\', '-')
+                        # Remove invalid characters and limit to 31 characters
+                        sheet_name = account_name
+                        for char in ['/', '\\', '?', '*', '[', ']', ':', '&']:
+                            sheet_name = sheet_name.replace(char, '-')
+                        sheet_name = sheet_name[:31]
                         
                         # Write to Excel
                         df.to_excel(writer, sheet_name=sheet_name, index=False)
                         
                         # Auto-adjust column widths
                         worksheet = writer.sheets[sheet_name]
-                        for column in df:
-                            column_width = max(df[column].astype(str).str.len().max(), 
-                                             len(column)) + 2
-                            col_idx = df.columns.get_loc(column)
-                            worksheet.column_dimensions[chr(65 + col_idx)].width = column_width
+                        for idx, column in enumerate(df.columns):
+                            max_length = max(
+                                df[column].astype(str).str.len().max(),
+                                len(column)
+                            ) + 2
+                            # Excel columns use letters A, B, C, etc.
+                            col_letter = chr(65 + idx)
+                            worksheet.column_dimensions[col_letter].width = max_length
             
             logger.info(f"Successfully exported data to {output_file}")
             
