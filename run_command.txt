@@ -1,0 +1,2 @@
+# Test with just one account for today
+python parking_report_automation.py --username Daniel.borja --password Daesbo1621$ --accounts "50 EGGS HOSPITALITY GROUP"
