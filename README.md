@@ -84,6 +84,18 @@ python parking_report_automation.py --username YOUR_USERNAME --password YOUR_PAS
 python parking_report_automation.py --username YOUR_USERNAME --password YOUR_PASSWORD --output september_reports.xlsx
 ```
 
+# Process just 3 days (1st to 3rd)
+python enhanced_parking_automation.py --username USER --password PASS --year 2025 --month 9 --start-day 1 --end-day 3
+
+# Process ALL accounts with progress bar
+python enhanced_parking_automation.py --username USER --password PASS
+
+# Resume if interrupted
+python enhanced_parking_automation.py --username USER --password PASS --resume
+
+# With email notification
+python enhanced_parking_automation.py --username USER --password PASS --email-to recipient@email.com --email-from sender@gmail.com --email-password app-password
+
 ### Full example with all options:
 ```bash
 python parking_report_automation.py \
