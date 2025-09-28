@@ -1,0 +1,554 @@
+2025-09-27 21:57:48,156 - INFO - Browser setup completed
+2025-09-27 21:57:48,156 - INFO - Attempting login...
+2025-09-27 21:57:55,138 - INFO - Login successful
+2025-09-27 21:57:55,138 - INFO - Navigating to reports...
+2025-09-27 21:57:56,386 - INFO - Successfully navigated to reports
+2025-09-27 21:57:56,386 - INFO - Extracting account list...
+2025-09-27 21:57:56,429 - INFO - Found 528 accounts
+2025-09-27 21:57:56,429 - INFO - Processing 528 accounts for 30 days = 15840 operations
+2025-09-27 21:57:56,481 - INFO - Processing account: 4141 - Artemide - Petia Stoykova
+2025-09-27 21:57:56,481 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/01/2025 to 09/01/2025
+2025-09-27 21:58:04,508 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/02/2025 to 09/02/2025
+2025-09-27 21:58:12,570 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/03/2025 to 09/03/2025
+2025-09-27 21:58:20,698 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/04/2025 to 09/04/2025
+2025-09-27 21:58:28,752 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/05/2025 to 09/05/2025
+2025-09-27 21:58:36,781 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/06/2025 to 09/06/2025
+2025-09-27 21:58:44,816 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/07/2025 to 09/07/2025
+2025-09-27 21:58:52,831 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/08/2025 to 09/08/2025
+2025-09-27 21:59:00,858 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/09/2025 to 09/09/2025
+2025-09-27 21:59:08,868 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/10/2025 to 09/10/2025
+2025-09-27 21:59:16,899 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/11/2025 to 09/11/2025
+2025-09-27 21:59:24,901 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/12/2025 to 09/12/2025
+2025-09-27 21:59:32,925 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/13/2025 to 09/13/2025
+2025-09-27 21:59:40,944 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/14/2025 to 09/14/2025
+2025-09-27 21:59:48,933 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/15/2025 to 09/15/2025
+2025-09-27 21:59:57,105 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/16/2025 to 09/16/2025
+2025-09-27 22:00:05,211 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/17/2025 to 09/17/2025
+2025-09-27 22:00:14,510 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/18/2025 to 09/18/2025
+2025-09-27 22:00:22,631 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/19/2025 to 09/19/2025
+2025-09-27 22:00:30,802 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/20/2025 to 09/20/2025
+2025-09-27 22:00:38,823 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/21/2025 to 09/21/2025
+2025-09-27 22:00:46,803 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/22/2025 to 09/22/2025
+2025-09-27 22:00:54,966 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/23/2025 to 09/23/2025
+2025-09-27 22:01:03,038 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/24/2025 to 09/24/2025
+2025-09-27 22:01:11,017 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/25/2025 to 09/25/2025
+2025-09-27 22:01:19,002 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/26/2025 to 09/26/2025
+2025-09-27 22:01:27,013 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/27/2025 to 09/27/2025
+2025-09-27 22:01:35,011 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/28/2025 to 09/28/2025
+2025-09-27 22:01:42,926 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/29/2025 to 09/29/2025
+2025-09-27 22:01:50,903 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/30/2025 to 09/30/2025
+2025-09-27 22:01:58,852 - INFO - Processing account: 4141 - B&B Italia
+2025-09-27 22:01:58,853 - INFO - Generating report for 4141 - B&B Italia from 09/01/2025 to 09/01/2025
+2025-09-27 22:02:06,933 - INFO - Generating report for 4141 - B&B Italia from 09/02/2025 to 09/02/2025
+2025-09-27 22:02:15,083 - INFO - Generating report for 4141 - B&B Italia from 09/03/2025 to 09/03/2025
+2025-09-27 22:02:23,157 - INFO - Generating report for 4141 - B&B Italia from 09/04/2025 to 09/04/2025
+2025-09-27 22:02:31,312 - INFO - Generating report for 4141 - B&B Italia from 09/05/2025 to 09/05/2025
+2025-09-27 22:02:39,506 - INFO - Generating report for 4141 - B&B Italia from 09/06/2025 to 09/06/2025
+2025-09-27 22:02:47,612 - INFO - Generating report for 4141 - B&B Italia from 09/07/2025 to 09/07/2025
+2025-09-27 22:02:55,759 - INFO - Generating report for 4141 - B&B Italia from 09/08/2025 to 09/08/2025
+2025-09-27 22:03:03,870 - INFO - Generating report for 4141 - B&B Italia from 09/09/2025 to 09/09/2025
+2025-09-27 22:03:11,964 - INFO - Generating report for 4141 - B&B Italia from 09/10/2025 to 09/10/2025
+2025-09-27 22:03:20,066 - INFO - Generating report for 4141 - B&B Italia from 09/11/2025 to 09/11/2025
+2025-09-27 22:03:28,190 - INFO - Generating report for 4141 - B&B Italia from 09/12/2025 to 09/12/2025
+2025-09-27 22:03:36,338 - INFO - Generating report for 4141 - B&B Italia from 09/13/2025 to 09/13/2025
+2025-09-27 22:03:44,418 - INFO - Generating report for 4141 - B&B Italia from 09/14/2025 to 09/14/2025
+2025-09-27 22:03:52,516 - INFO - Generating report for 4141 - B&B Italia from 09/15/2025 to 09/15/2025
+2025-09-27 22:04:00,669 - INFO - Generating report for 4141 - B&B Italia from 09/16/2025 to 09/16/2025
+2025-09-27 22:04:08,791 - INFO - Generating report for 4141 - B&B Italia from 09/17/2025 to 09/17/2025
+2025-09-27 22:04:17,038 - INFO - Generating report for 4141 - B&B Italia from 09/18/2025 to 09/18/2025
+2025-09-27 22:04:25,184 - INFO - Generating report for 4141 - B&B Italia from 09/19/2025 to 09/19/2025
+2025-09-27 22:04:33,303 - INFO - Generating report for 4141 - B&B Italia from 09/20/2025 to 09/20/2025
+2025-09-27 22:04:41,394 - INFO - Generating report for 4141 - B&B Italia from 09/21/2025 to 09/21/2025
+2025-09-27 22:04:49,507 - INFO - Generating report for 4141 - B&B Italia from 09/22/2025 to 09/22/2025
+2025-09-27 22:04:57,655 - INFO - Generating report for 4141 - B&B Italia from 09/23/2025 to 09/23/2025
+2025-09-27 22:05:05,713 - INFO - Generating report for 4141 - B&B Italia from 09/24/2025 to 09/24/2025
+2025-09-27 22:05:13,812 - INFO - Generating report for 4141 - B&B Italia from 09/25/2025 to 09/25/2025
+2025-09-27 22:05:21,923 - INFO - Generating report for 4141 - B&B Italia from 09/26/2025 to 09/26/2025
+2025-09-27 22:05:30,990 - INFO - Generating report for 4141 - B&B Italia from 09/27/2025 to 09/27/2025
+2025-09-27 22:05:39,096 - INFO - Generating report for 4141 - B&B Italia from 09/28/2025 to 09/28/2025
+2025-09-27 22:05:47,172 - INFO - Generating report for 4141 - B&B Italia from 09/29/2025 to 09/29/2025
+2025-09-27 22:05:55,253 - INFO - Generating report for 4141 - B&B Italia from 09/30/2025 to 09/30/2025
+2025-09-27 22:06:03,312 - INFO - Processing account: 4141 - Biodent Clinic
+2025-09-27 22:06:03,312 - INFO - Generating report for 4141 - Biodent Clinic from 09/01/2025 to 09/01/2025
+2025-09-27 22:06:11,433 - INFO - Generating report for 4141 - Biodent Clinic from 09/02/2025 to 09/02/2025
+2025-09-27 22:06:19,493 - INFO - Generating report for 4141 - Biodent Clinic from 09/03/2025 to 09/03/2025
+2025-09-27 22:06:27,763 - INFO - Generating report for 4141 - Biodent Clinic from 09/04/2025 to 09/04/2025
+2025-09-27 22:06:36,061 - INFO - Generating report for 4141 - Biodent Clinic from 09/05/2025 to 09/05/2025
+2025-09-27 22:06:44,315 - INFO - Generating report for 4141 - Biodent Clinic from 09/06/2025 to 09/06/2025
+2025-09-27 22:06:52,503 - INFO - Generating report for 4141 - Biodent Clinic from 09/07/2025 to 09/07/2025
+2025-09-27 22:07:00,655 - INFO - Generating report for 4141 - Biodent Clinic from 09/08/2025 to 09/08/2025
+2025-09-27 22:07:08,856 - INFO - Generating report for 4141 - Biodent Clinic from 09/09/2025 to 09/09/2025
+2025-09-27 22:07:17,012 - INFO - Generating report for 4141 - Biodent Clinic from 09/10/2025 to 09/10/2025
+2025-09-27 22:07:25,230 - INFO - Generating report for 4141 - Biodent Clinic from 09/11/2025 to 09/11/2025
+2025-09-27 22:07:33,331 - INFO - Generating report for 4141 - Biodent Clinic from 09/12/2025 to 09/12/2025
+2025-09-27 22:07:41,376 - INFO - Generating report for 4141 - Biodent Clinic from 09/13/2025 to 09/13/2025
+2025-09-27 22:07:49,561 - INFO - Generating report for 4141 - Biodent Clinic from 09/14/2025 to 09/14/2025
+2025-09-27 22:07:57,673 - INFO - Generating report for 4141 - Biodent Clinic from 09/15/2025 to 09/15/2025
+2025-09-27 22:08:05,790 - INFO - Generating report for 4141 - Biodent Clinic from 09/16/2025 to 09/16/2025
+2025-09-27 22:08:13,908 - INFO - Generating report for 4141 - Biodent Clinic from 09/17/2025 to 09/17/2025
+2025-09-27 22:08:22,011 - INFO - Generating report for 4141 - Biodent Clinic from 09/18/2025 to 09/18/2025
+2025-09-27 22:08:30,071 - INFO - Generating report for 4141 - Biodent Clinic from 09/19/2025 to 09/19/2025
+2025-09-27 22:08:38,311 - INFO - Generating report for 4141 - Biodent Clinic from 09/20/2025 to 09/20/2025
+2025-09-27 22:08:46,407 - INFO - Generating report for 4141 - Biodent Clinic from 09/21/2025 to 09/21/2025
+2025-09-27 22:08:54,517 - INFO - Generating report for 4141 - Biodent Clinic from 09/22/2025 to 09/22/2025
+2025-09-27 22:09:02,630 - INFO - Generating report for 4141 - Biodent Clinic from 09/23/2025 to 09/23/2025
+2025-09-27 22:09:10,694 - INFO - Generating report for 4141 - Biodent Clinic from 09/24/2025 to 09/24/2025
+2025-09-27 22:09:18,739 - INFO - Generating report for 4141 - Biodent Clinic from 09/25/2025 to 09/25/2025
+2025-09-27 22:09:26,821 - INFO - Generating report for 4141 - Biodent Clinic from 09/26/2025 to 09/26/2025
+2025-09-27 22:09:34,868 - INFO - Generating report for 4141 - Biodent Clinic from 09/27/2025 to 09/27/2025
+2025-09-27 22:09:42,995 - INFO - Generating report for 4141 - Biodent Clinic from 09/28/2025 to 09/28/2025
+2025-09-27 22:09:51,089 - INFO - Generating report for 4141 - Biodent Clinic from 09/29/2025 to 09/29/2025
+2025-09-27 22:09:59,155 - INFO - Generating report for 4141 - Biodent Clinic from 09/30/2025 to 09/30/2025
+2025-09-27 22:10:07,207 - INFO - Processing account: 4141 - Biohax Intitute
+2025-09-27 22:10:07,207 - INFO - Generating report for 4141 - Biohax Intitute from 09/01/2025 to 09/01/2025
+2025-09-27 22:10:15,355 - INFO - Generating report for 4141 - Biohax Intitute from 09/02/2025 to 09/02/2025
+2025-09-27 22:10:23,549 - INFO - Generating report for 4141 - Biohax Intitute from 09/03/2025 to 09/03/2025
+2025-09-27 22:10:31,661 - INFO - Generating report for 4141 - Biohax Intitute from 09/04/2025 to 09/04/2025
+2025-09-27 22:10:39,825 - INFO - Generating report for 4141 - Biohax Intitute from 09/05/2025 to 09/05/2025
+2025-09-27 22:10:48,165 - INFO - Generating report for 4141 - Biohax Intitute from 09/06/2025 to 09/06/2025
+2025-09-27 22:10:56,461 - INFO - Generating report for 4141 - Biohax Intitute from 09/07/2025 to 09/07/2025
+2025-09-27 22:11:04,703 - INFO - Generating report for 4141 - Biohax Intitute from 09/08/2025 to 09/08/2025
+2025-09-27 22:11:12,850 - INFO - Generating report for 4141 - Biohax Intitute from 09/09/2025 to 09/09/2025
+2025-09-27 22:11:21,025 - INFO - Generating report for 4141 - Biohax Intitute from 09/10/2025 to 09/10/2025
+2025-09-27 22:11:29,196 - INFO - Generating report for 4141 - Biohax Intitute from 09/11/2025 to 09/11/2025
+2025-09-27 22:11:37,274 - INFO - Generating report for 4141 - Biohax Intitute from 09/12/2025 to 09/12/2025
+2025-09-27 22:11:45,468 - INFO - Generating report for 4141 - Biohax Intitute from 09/13/2025 to 09/13/2025
+2025-09-27 22:11:53,603 - INFO - Generating report for 4141 - Biohax Intitute from 09/14/2025 to 09/14/2025
+2025-09-27 22:12:01,702 - INFO - Generating report for 4141 - Biohax Intitute from 09/15/2025 to 09/15/2025
+2025-09-27 22:12:09,920 - INFO - Generating report for 4141 - Biohax Intitute from 09/16/2025 to 09/16/2025
+2025-09-27 22:12:18,010 - INFO - Generating report for 4141 - Biohax Intitute from 09/17/2025 to 09/17/2025
+2025-09-27 22:12:26,267 - INFO - Generating report for 4141 - Biohax Intitute from 09/18/2025 to 09/18/2025
+2025-09-27 22:12:34,356 - INFO - Generating report for 4141 - Biohax Intitute from 09/19/2025 to 09/19/2025
+2025-09-27 22:12:42,463 - INFO - Generating report for 4141 - Biohax Intitute from 09/20/2025 to 09/20/2025
+2025-09-27 22:12:50,563 - INFO - Generating report for 4141 - Biohax Intitute from 09/21/2025 to 09/21/2025
+2025-09-27 22:12:58,688 - INFO - Generating report for 4141 - Biohax Intitute from 09/22/2025 to 09/22/2025
+2025-09-27 22:13:07,100 - INFO - Generating report for 4141 - Biohax Intitute from 09/23/2025 to 09/23/2025
+2025-09-27 22:13:15,293 - INFO - Generating report for 4141 - Biohax Intitute from 09/24/2025 to 09/24/2025
+2025-09-27 22:13:29,341 - INFO - Generating report for 4141 - Biohax Intitute from 09/25/2025 to 09/25/2025
+2025-09-27 22:13:38,829 - INFO - Generating report for 4141 - Biohax Intitute from 09/26/2025 to 09/26/2025
+2025-09-27 22:13:47,042 - INFO - Generating report for 4141 - Biohax Intitute from 09/27/2025 to 09/27/2025
+2025-09-27 22:13:55,114 - INFO - Generating report for 4141 - Biohax Intitute from 09/28/2025 to 09/28/2025
+2025-09-27 22:14:03,208 - INFO - Generating report for 4141 - Biohax Intitute from 09/29/2025 to 09/29/2025
+2025-09-27 22:14:11,307 - INFO - Generating report for 4141 - Biohax Intitute from 09/30/2025 to 09/30/2025
+2025-09-27 22:14:19,355 - INFO - Processing account: 4141 - CASA BELLA
+2025-09-27 22:14:19,355 - INFO - Generating report for 4141 - CASA BELLA from 09/01/2025 to 09/01/2025
+2025-09-27 22:14:27,474 - INFO - Generating report for 4141 - CASA BELLA from 09/02/2025 to 09/02/2025
+2025-09-27 22:14:35,605 - INFO - Generating report for 4141 - CASA BELLA from 09/03/2025 to 09/03/2025
+2025-09-27 22:14:43,722 - INFO - Generating report for 4141 - CASA BELLA from 09/04/2025 to 09/04/2025
+2025-09-27 22:14:51,892 - INFO - Generating report for 4141 - CASA BELLA from 09/05/2025 to 09/05/2025
+2025-09-27 22:15:00,001 - INFO - Generating report for 4141 - CASA BELLA from 09/06/2025 to 09/06/2025
+2025-09-27 22:15:08,144 - INFO - Generating report for 4141 - CASA BELLA from 09/07/2025 to 09/07/2025
+2025-09-27 22:15:16,263 - INFO - Generating report for 4141 - CASA BELLA from 09/08/2025 to 09/08/2025
+2025-09-27 22:15:24,610 - INFO - Generating report for 4141 - CASA BELLA from 09/09/2025 to 09/09/2025
+2025-09-27 22:15:32,972 - INFO - Generating report for 4141 - CASA BELLA from 09/10/2025 to 09/10/2025
+2025-09-27 22:15:41,385 - INFO - Generating report for 4141 - CASA BELLA from 09/11/2025 to 09/11/2025
+2025-09-27 22:15:49,595 - INFO - Generating report for 4141 - CASA BELLA from 09/12/2025 to 09/12/2025
+2025-09-27 22:15:57,761 - INFO - Generating report for 4141 - CASA BELLA from 09/13/2025 to 09/13/2025
+2025-09-27 22:16:05,980 - INFO - Generating report for 4141 - CASA BELLA from 09/14/2025 to 09/14/2025
+2025-09-27 22:16:14,157 - INFO - Generating report for 4141 - CASA BELLA from 09/15/2025 to 09/15/2025
+2025-09-27 22:16:22,297 - INFO - Generating report for 4141 - CASA BELLA from 09/16/2025 to 09/16/2025
+2025-09-27 22:16:30,424 - INFO - Generating report for 4141 - CASA BELLA from 09/17/2025 to 09/17/2025
+2025-09-27 22:16:38,694 - INFO - Generating report for 4141 - CASA BELLA from 09/18/2025 to 09/18/2025
+2025-09-27 22:16:46,765 - INFO - Generating report for 4141 - CASA BELLA from 09/19/2025 to 09/19/2025
+2025-09-27 22:16:54,933 - INFO - Generating report for 4141 - CASA BELLA from 09/20/2025 to 09/20/2025
+2025-09-27 22:17:03,027 - INFO - Generating report for 4141 - CASA BELLA from 09/21/2025 to 09/21/2025
+2025-09-27 22:17:11,208 - INFO - Generating report for 4141 - CASA BELLA from 09/22/2025 to 09/22/2025
+2025-09-27 22:17:19,302 - INFO - Generating report for 4141 - CASA BELLA from 09/23/2025 to 09/23/2025
+2025-09-27 22:17:27,490 - INFO - Generating report for 4141 - CASA BELLA from 09/24/2025 to 09/24/2025
+2025-09-27 22:17:35,589 - INFO - Generating report for 4141 - CASA BELLA from 09/25/2025 to 09/25/2025
+2025-09-27 22:17:43,718 - INFO - Generating report for 4141 - CASA BELLA from 09/26/2025 to 09/26/2025
+2025-09-27 22:17:51,805 - INFO - Generating report for 4141 - CASA BELLA from 09/27/2025 to 09/27/2025
+2025-09-27 22:17:59,937 - INFO - Generating report for 4141 - CASA BELLA from 09/28/2025 to 09/28/2025
+2025-09-27 22:18:08,017 - INFO - Generating report for 4141 - CASA BELLA from 09/29/2025 to 09/29/2025
+2025-09-27 22:18:16,050 - INFO - Generating report for 4141 - CASA BELLA from 09/30/2025 to 09/30/2025
+2025-09-27 22:18:24,151 - INFO - Processing account: 4141 - Christies
+2025-09-27 22:18:24,151 - INFO - Generating report for 4141 - Christies from 09/01/2025 to 09/01/2025
+2025-09-27 22:18:32,384 - INFO - Generating report for 4141 - Christies from 09/02/2025 to 09/02/2025
+2025-09-27 22:18:40,524 - INFO - Generating report for 4141 - Christies from 09/03/2025 to 09/03/2025
+2025-09-27 22:18:48,672 - INFO - Generating report for 4141 - Christies from 09/04/2025 to 09/04/2025
+2025-09-27 22:18:56,813 - INFO - Generating report for 4141 - Christies from 09/05/2025 to 09/05/2025
+2025-09-27 22:19:05,016 - INFO - Generating report for 4141 - Christies from 09/06/2025 to 09/06/2025
+2025-09-27 22:19:13,067 - INFO - Generating report for 4141 - Christies from 09/07/2025 to 09/07/2025
+2025-09-27 22:19:21,238 - INFO - Generating report for 4141 - Christies from 09/08/2025 to 09/08/2025
+2025-09-27 22:19:29,300 - INFO - Generating report for 4141 - Christies from 09/09/2025 to 09/09/2025
+2025-09-27 22:19:37,521 - INFO - Generating report for 4141 - Christies from 09/10/2025 to 09/10/2025
+2025-09-27 22:19:45,730 - INFO - Generating report for 4141 - Christies from 09/11/2025 to 09/11/2025
+2025-09-27 22:19:53,846 - INFO - Generating report for 4141 - Christies from 09/12/2025 to 09/12/2025
+2025-09-27 22:20:02,025 - INFO - Generating report for 4141 - Christies from 09/13/2025 to 09/13/2025
+2025-09-27 22:20:10,287 - INFO - Generating report for 4141 - Christies from 09/14/2025 to 09/14/2025
+2025-09-27 22:20:18,428 - INFO - Generating report for 4141 - Christies from 09/15/2025 to 09/15/2025
+2025-09-27 22:20:26,552 - INFO - Generating report for 4141 - Christies from 09/16/2025 to 09/16/2025
+2025-09-27 22:20:34,657 - INFO - Generating report for 4141 - Christies from 09/17/2025 to 09/17/2025
+2025-09-27 22:20:42,804 - INFO - Generating report for 4141 - Christies from 09/18/2025 to 09/18/2025
+2025-09-27 22:20:50,893 - INFO - Generating report for 4141 - Christies from 09/19/2025 to 09/19/2025
+2025-09-27 22:20:58,976 - INFO - Generating report for 4141 - Christies from 09/20/2025 to 09/20/2025
+2025-09-27 22:21:07,144 - INFO - Generating report for 4141 - Christies from 09/21/2025 to 09/21/2025
+2025-09-27 22:21:15,239 - INFO - Generating report for 4141 - Christies from 09/22/2025 to 09/22/2025
+2025-09-27 22:21:23,330 - INFO - Generating report for 4141 - Christies from 09/23/2025 to 09/23/2025
+2025-09-27 22:21:31,473 - INFO - Generating report for 4141 - Christies from 09/24/2025 to 09/24/2025
+2025-09-27 22:21:39,547 - INFO - Generating report for 4141 - Christies from 09/25/2025 to 09/25/2025
+2025-09-27 22:21:47,616 - INFO - Generating report for 4141 - Christies from 09/26/2025 to 09/26/2025
+2025-09-27 22:21:55,726 - INFO - Generating report for 4141 - Christies from 09/27/2025 to 09/27/2025
+2025-09-27 22:22:04,096 - INFO - Generating report for 4141 - Christies from 09/28/2025 to 09/28/2025
+2025-09-27 22:22:12,330 - INFO - Generating report for 4141 - Christies from 09/29/2025 to 09/29/2025
+2025-09-27 22:22:20,527 - INFO - Generating report for 4141 - Christies from 09/30/2025 to 09/30/2025
+2025-09-27 22:22:28,629 - INFO - Processing account: 4141 - CSLL
+2025-09-27 22:22:28,629 - INFO - Generating report for 4141 - CSLL from 09/01/2025 to 09/01/2025
+2025-09-27 22:22:36,772 - INFO - Generating report for 4141 - CSLL from 09/02/2025 to 09/02/2025
+2025-09-27 22:22:45,028 - INFO - Generating report for 4141 - CSLL from 09/03/2025 to 09/03/2025
+2025-09-27 22:22:53,262 - INFO - Generating report for 4141 - CSLL from 09/04/2025 to 09/04/2025
+2025-09-27 22:23:01,364 - INFO - Generating report for 4141 - CSLL from 09/05/2025 to 09/05/2025
+2025-09-27 22:23:09,484 - INFO - Generating report for 4141 - CSLL from 09/06/2025 to 09/06/2025
+2025-09-27 22:23:17,606 - INFO - Generating report for 4141 - CSLL from 09/07/2025 to 09/07/2025
+2025-09-27 22:23:25,649 - INFO - Generating report for 4141 - CSLL from 09/08/2025 to 09/08/2025
+2025-09-27 22:23:33,740 - INFO - Generating report for 4141 - CSLL from 09/09/2025 to 09/09/2025
+2025-09-27 22:23:41,845 - INFO - Generating report for 4141 - CSLL from 09/10/2025 to 09/10/2025
+2025-09-27 22:23:49,926 - INFO - Generating report for 4141 - CSLL from 09/11/2025 to 09/11/2025
+2025-09-27 22:23:57,999 - INFO - Generating report for 4141 - CSLL from 09/12/2025 to 09/12/2025
+2025-09-27 22:24:06,189 - INFO - Generating report for 4141 - CSLL from 09/13/2025 to 09/13/2025
+2025-09-27 22:24:14,494 - INFO - Generating report for 4141 - CSLL from 09/14/2025 to 09/14/2025
+2025-09-27 22:24:22,612 - INFO - Generating report for 4141 - CSLL from 09/15/2025 to 09/15/2025
+2025-09-27 22:24:30,756 - INFO - Generating report for 4141 - CSLL from 09/16/2025 to 09/16/2025
+2025-09-27 22:24:38,934 - INFO - Generating report for 4141 - CSLL from 09/17/2025 to 09/17/2025
+2025-09-27 22:24:47,121 - INFO - Generating report for 4141 - CSLL from 09/18/2025 to 09/18/2025
+2025-09-27 22:24:55,321 - INFO - Generating report for 4141 - CSLL from 09/19/2025 to 09/19/2025
+2025-09-27 23:06:20,301 - INFO - Browser setup completed
+2025-09-27 23:06:20,301 - INFO - Attempting login...
+2025-09-27 23:06:28,931 - INFO - Login successful
+2025-09-27 23:06:28,931 - INFO - Navigating to reports...
+2025-09-27 23:06:30,193 - INFO - Successfully navigated to reports
+2025-09-27 23:06:30,193 - INFO - Extracting account list...
+2025-09-27 23:06:30,233 - INFO - Found 529 accounts
+2025-09-27 23:06:30,234 - INFO - Processing 529 accounts for 30 days = 15870 operations
+2025-09-27 23:06:30,241 - INFO - Skipping already completed account: 4141 - Artemide - Petia Stoykova
+2025-09-27 23:06:30,241 - INFO - Skipping already completed account: 4141 - B&B Italia
+2025-09-27 23:06:30,241 - INFO - Skipping already completed account: 4141 - Biodent Clinic
+2025-09-27 23:06:30,241 - INFO - Skipping already completed account: 4141 - Biohax Intitute
+2025-09-27 23:06:30,242 - INFO - Skipping already completed account: 4141 - CASA BELLA
+2025-09-27 23:06:30,242 - INFO - Skipping already completed account: 4141 - Christies
+2025-09-27 23:06:30,242 - INFO - Processing account: 4141 - CSLL
+2025-09-27 23:06:30,242 - INFO - Generating report for 4141 - CSLL from 09/01/2025 to 09/01/2025
+2025-09-27 23:06:38,246 - INFO - Generating report for 4141 - CSLL from 09/02/2025 to 09/02/2025
+2025-09-27 23:06:46,302 - INFO - Generating report for 4141 - CSLL from 09/03/2025 to 09/03/2025
+2025-09-27 23:06:54,340 - INFO - Generating report for 4141 - CSLL from 09/04/2025 to 09/04/2025
+2025-09-27 23:07:02,839 - INFO - Generating report for 4141 - CSLL from 09/05/2025 to 09/05/2025
+2025-09-27 23:07:10,937 - INFO - Generating report for 4141 - CSLL from 09/06/2025 to 09/06/2025
+2025-09-27 23:07:18,949 - INFO - Generating report for 4141 - CSLL from 09/07/2025 to 09/07/2025
+2025-09-27 23:07:26,999 - INFO - Generating report for 4141 - CSLL from 09/08/2025 to 09/08/2025
+2025-09-27 23:07:35,003 - INFO - Generating report for 4141 - CSLL from 09/09/2025 to 09/09/2025
+2025-09-27 23:07:42,984 - INFO - Generating report for 4141 - CSLL from 09/10/2025 to 09/10/2025
+2025-09-27 23:07:51,045 - INFO - Generating report for 4141 - CSLL from 09/11/2025 to 09/11/2025
+2025-09-27 23:07:59,080 - INFO - Generating report for 4141 - CSLL from 09/12/2025 to 09/12/2025
+2025-09-27 23:08:07,123 - INFO - Generating report for 4141 - CSLL from 09/13/2025 to 09/13/2025
+2025-09-27 23:08:15,245 - INFO - Generating report for 4141 - CSLL from 09/14/2025 to 09/14/2025
+2025-09-27 23:08:23,380 - INFO - Generating report for 4141 - CSLL from 09/15/2025 to 09/15/2025
+2025-09-27 23:08:31,524 - INFO - Generating report for 4141 - CSLL from 09/16/2025 to 09/16/2025
+2025-09-27 23:08:39,624 - INFO - Generating report for 4141 - CSLL from 09/17/2025 to 09/17/2025
+2025-09-27 23:08:47,676 - INFO - Generating report for 4141 - CSLL from 09/18/2025 to 09/18/2025
+2025-09-27 23:08:55,743 - INFO - Generating report for 4141 - CSLL from 09/19/2025 to 09/19/2025
+2025-09-27 23:09:03,793 - INFO - Generating report for 4141 - CSLL from 09/20/2025 to 09/20/2025
+2025-09-28 00:49:00,509 - INFO - Browser setup completed
+2025-09-28 00:49:00,509 - INFO - Attempting login...
+2025-09-28 00:49:07,862 - INFO - Login successful
+2025-09-28 00:49:07,862 - INFO - Navigating to reports...
+2025-09-28 00:49:09,331 - INFO - Successfully navigated to reports
+2025-09-28 00:49:09,331 - INFO - Extracting account list...
+2025-09-28 00:49:09,370 - INFO - Found 529 accounts
+2025-09-28 00:49:09,371 - INFO - Processing 529 accounts for 30 days = 15870 operations
+2025-09-28 00:49:09,403 - INFO - Skipping already completed account: 4141 - Artemide - Petia Stoykova
+2025-09-28 00:49:09,403 - INFO - Skipping already completed account: 4141 - B&B Italia
+2025-09-28 00:49:09,403 - INFO - Skipping already completed account: 4141 - Biodent Clinic
+2025-09-28 00:49:09,403 - INFO - Skipping already completed account: 4141 - Biohax Intitute
+2025-09-28 00:49:09,403 - INFO - Skipping already completed account: 4141 - CASA BELLA
+2025-09-28 00:49:09,403 - INFO - Skipping already completed account: 4141 - Christies
+2025-09-28 00:49:09,403 - INFO - Processing account: 4141 - CSLL
+2025-09-28 00:49:09,403 - INFO - Generating report for 4141 - CSLL from 09/01/2025 to 09/01/2025
+2025-09-28 00:49:17,489 - INFO - Generating report for 4141 - CSLL from 09/02/2025 to 09/02/2025
+2025-09-28 00:49:25,639 - INFO - Generating report for 4141 - CSLL from 09/03/2025 to 09/03/2025
+2025-09-28 00:49:33,809 - INFO - Generating report for 4141 - CSLL from 09/04/2025 to 09/04/2025
+2025-09-28 00:49:41,924 - INFO - Generating report for 4141 - CSLL from 09/05/2025 to 09/05/2025
+2025-09-28 00:49:50,005 - INFO - Generating report for 4141 - CSLL from 09/06/2025 to 09/06/2025
+2025-09-28 00:49:58,108 - INFO - Generating report for 4141 - CSLL from 09/07/2025 to 09/07/2025
+2025-09-28 00:50:06,107 - INFO - Generating report for 4141 - CSLL from 09/08/2025 to 09/08/2025
+2025-09-28 00:50:14,188 - INFO - Generating report for 4141 - CSLL from 09/09/2025 to 09/09/2025
+2025-09-28 00:50:22,234 - INFO - Generating report for 4141 - CSLL from 09/10/2025 to 09/10/2025
+2025-09-28 00:50:30,471 - INFO - Generating report for 4141 - CSLL from 09/11/2025 to 09/11/2025
+2025-09-28 00:50:38,537 - INFO - Generating report for 4141 - CSLL from 09/12/2025 to 09/12/2025
+2025-09-28 00:50:46,652 - INFO - Generating report for 4141 - CSLL from 09/13/2025 to 09/13/2025
+2025-09-28 00:50:54,711 - INFO - Generating report for 4141 - CSLL from 09/14/2025 to 09/14/2025
+2025-09-28 00:51:02,827 - INFO - Generating report for 4141 - CSLL from 09/15/2025 to 09/15/2025
+2025-09-28 00:51:10,989 - INFO - Generating report for 4141 - CSLL from 09/16/2025 to 09/16/2025
+2025-09-28 00:51:19,081 - INFO - Generating report for 4141 - CSLL from 09/17/2025 to 09/17/2025
+2025-09-28 00:51:27,249 - INFO - Generating report for 4141 - CSLL from 09/18/2025 to 09/18/2025
+2025-09-28 00:51:35,239 - INFO - Generating report for 4141 - CSLL from 09/19/2025 to 09/19/2025
+2025-09-28 00:51:43,313 - INFO - Generating report for 4141 - CSLL from 09/20/2025 to 09/20/2025
+2025-09-28 00:55:54,309 - INFO - Browser setup completed
+2025-09-28 00:55:54,309 - INFO - Attempting login...
+2025-09-28 00:55:58,410 - INFO - Login successful
+2025-09-28 00:55:58,410 - INFO - Navigating to reports...
+2025-09-28 00:55:59,717 - INFO - Successfully navigated to reports
+2025-09-28 00:55:59,717 - INFO - Extracting account list...
+2025-09-28 00:55:59,757 - INFO - Found 529 accounts
+2025-09-28 00:55:59,757 - INFO - Processing 529 accounts for 30 days = 15870 operations
+2025-09-28 00:55:59,763 - INFO - Processing account: 4141 - Artemide - Petia Stoykova
+2025-09-28 00:55:59,763 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/01/2025 to 09/01/2025
+2025-09-28 00:56:07,756 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/02/2025 to 09/02/2025
+2025-09-28 00:56:15,788 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/03/2025 to 09/03/2025
+2025-09-28 00:56:23,854 - INFO - Generating report for 4141 - Artemide - Petia Stoykova from 09/04/2025 to 09/04/2025
+2025-09-28 00:56:37,564 - INFO - Browser setup completed
+2025-09-28 00:56:37,564 - INFO - Attempting login...
+2025-09-28 00:56:40,420 - INFO - Browser setup completed
+2025-09-28 00:56:40,420 - INFO - Attempting login...
+2025-09-28 00:56:42,180 - INFO - Login successful
+2025-09-28 00:56:42,180 - INFO - Navigating to reports...
+2025-09-28 00:56:43,665 - INFO - Successfully navigated to reports
+2025-09-28 00:56:43,665 - INFO - Extracting account list...
+2025-09-28 00:56:43,706 - INFO - Found 529 accounts
+2025-09-28 00:56:43,706 - INFO - Processing 529 accounts for 30 days = 15870 operations
+2025-09-28 00:56:44,719 - INFO - Login successful
+2025-09-28 00:56:44,719 - INFO - Navigating to reports...
+2025-09-28 00:56:46,081 - INFO - Successfully navigated to reports
+2025-09-28 00:56:46,081 - INFO - Extracting account list...
+2025-09-28 00:56:46,121 - INFO - Found 529 accounts
+2025-09-28 00:56:46,121 - INFO - Processing 529 accounts for 30 days = 15870 operations
+2025-09-28 00:56:46,127 - INFO - Skipping already completed account: 4141 - Artemide - Petia Stoykova
+2025-09-28 00:56:46,127 - INFO - Skipping already completed account: 4141 - B&B Italia
+2025-09-28 00:56:46,127 - INFO - Skipping already completed account: 4141 - Biodent Clinic
+2025-09-28 00:56:46,127 - INFO - Skipping already completed account: 4141 - Biohax Intitute
+2025-09-28 00:56:46,127 - INFO - Skipping already completed account: 4141 - CASA BELLA
+2025-09-28 00:56:46,127 - INFO - Skipping already completed account: 4141 - Christies
+2025-09-28 00:56:46,127 - INFO - Processing account: 4141 - CSLL
+2025-09-28 00:56:46,127 - INFO - Generating report for 4141 - CSLL from 09/01/2025 to 09/01/2025
+2025-09-28 00:56:54,170 - INFO - Generating report for 4141 - CSLL from 09/02/2025 to 09/02/2025
+2025-09-28 00:57:04,560 - INFO - Browser setup completed
+2025-09-28 00:57:04,560 - INFO - Attempting login...
+2025-09-28 00:57:04,616 - INFO - Browser setup completed
+2025-09-28 00:57:04,617 - INFO - Attempting login...
+2025-09-28 00:57:08,855 - INFO - Login successful
+2025-09-28 00:57:08,856 - INFO - Navigating to reports...
+2025-09-28 00:57:09,086 - INFO - Login successful
+2025-09-28 00:57:09,086 - INFO - Navigating to reports...
+2025-09-28 00:57:10,644 - INFO - Successfully navigated to reports
+2025-09-28 00:57:10,644 - INFO - Extracting account list...
+2025-09-28 00:57:10,686 - INFO - Found 529 accounts
+2025-09-28 00:57:10,686 - INFO - Processing 529 accounts for 30 days = 15870 operations
+2025-09-28 00:57:10,693 - INFO - Skipping already completed account: 4141 - Artemide - Petia Stoykova
+2025-09-28 00:57:10,694 - INFO - Skipping already completed account: 4141 - B&B Italia
+2025-09-28 00:57:10,694 - INFO - Skipping already completed account: 4141 - Biodent Clinic
+2025-09-28 00:57:10,694 - INFO - Skipping already completed account: 4141 - Biohax Intitute
+2025-09-28 00:57:10,694 - INFO - Skipping already completed account: 4141 - CASA BELLA
+2025-09-28 00:57:10,694 - INFO - Skipping already completed account: 4141 - Christies
+2025-09-28 00:57:10,694 - INFO - Processing account: 4141 - CSLL
+2025-09-28 00:57:10,694 - INFO - Generating report for 4141 - CSLL from 09/01/2025 to 09/01/2025
+2025-09-28 00:57:11,213 - ERROR - Failed to generate report for 4141 - CSLL on 09/01/2025: Target page, context or browser has been closed
+2025-09-28 00:57:12,216 - INFO - Generating report for 4141 - CSLL from 09/02/2025 to 09/02/2025
+2025-09-28 00:57:12,222 - ERROR - Failed to generate report for 4141 - CSLL on 09/02/2025: Target page, context or browser has been closed
+2025-09-28 00:57:13,224 - INFO - Generating report for 4141 - CSLL from 09/03/2025 to 09/03/2025
+2025-09-28 00:57:13,227 - ERROR - Failed to generate report for 4141 - CSLL on 09/03/2025: Target page, context or browser has been closed
+2025-09-28 00:57:14,234 - INFO - Generating report for 4141 - CSLL from 09/04/2025 to 09/04/2025
+2025-09-28 00:57:14,237 - ERROR - Failed to generate report for 4141 - CSLL on 09/04/2025: Target page, context or browser has been closed
+2025-09-28 00:57:15,240 - INFO - Generating report for 4141 - CSLL from 09/05/2025 to 09/05/2025
+2025-09-28 00:57:15,242 - ERROR - Failed to generate report for 4141 - CSLL on 09/05/2025: Target page, context or browser has been closed
+2025-09-28 00:57:16,248 - INFO - Generating report for 4141 - CSLL from 09/06/2025 to 09/06/2025
+2025-09-28 00:57:16,250 - ERROR - Failed to generate report for 4141 - CSLL on 09/06/2025: Target page, context or browser has been closed
+2025-09-28 00:57:17,253 - INFO - Generating report for 4141 - CSLL from 09/07/2025 to 09/07/2025
+2025-09-28 00:57:17,256 - ERROR - Failed to generate report for 4141 - CSLL on 09/07/2025: Target page, context or browser has been closed
+2025-09-28 00:57:18,258 - INFO - Generating report for 4141 - CSLL from 09/08/2025 to 09/08/2025
+2025-09-28 00:57:18,260 - ERROR - Failed to generate report for 4141 - CSLL on 09/08/2025: Target page, context or browser has been closed
+2025-09-28 00:57:19,269 - INFO - Generating report for 4141 - CSLL from 09/09/2025 to 09/09/2025
+2025-09-28 00:57:19,272 - ERROR - Failed to generate report for 4141 - CSLL on 09/09/2025: Target page, context or browser has been closed
+2025-09-28 00:57:20,287 - INFO - Generating report for 4141 - CSLL from 09/10/2025 to 09/10/2025
+2025-09-28 00:57:20,289 - ERROR - Failed to generate report for 4141 - CSLL on 09/10/2025: Target page, context or browser has been closed
+2025-09-28 00:57:21,292 - INFO - Generating report for 4141 - CSLL from 09/11/2025 to 09/11/2025
+2025-09-28 00:57:21,294 - ERROR - Failed to generate report for 4141 - CSLL on 09/11/2025: Target page, context or browser has been closed
+2025-09-28 00:57:22,309 - INFO - Generating report for 4141 - CSLL from 09/12/2025 to 09/12/2025
+2025-09-28 00:57:22,312 - ERROR - Failed to generate report for 4141 - CSLL on 09/12/2025: Target page, context or browser has been closed
+2025-09-28 00:57:26,268 - INFO - Generating report for 4141 - CSLL from 09/13/2025 to 09/13/2025
+2025-09-28 00:57:26,270 - ERROR - Failed to generate report for 4141 - CSLL on 09/13/2025: Target page, context or browser has been closed
+2025-09-28 00:57:26,593 - INFO - Browser setup completed
+2025-09-28 00:57:26,594 - INFO - Attempting login...
+2025-09-28 00:57:27,276 - INFO - Generating report for 4141 - CSLL from 09/14/2025 to 09/14/2025
+2025-09-28 00:57:27,279 - ERROR - Failed to generate report for 4141 - CSLL on 09/14/2025: Target page, context or browser has been closed
+2025-09-28 00:57:28,279 - INFO - Generating report for 4141 - CSLL from 09/15/2025 to 09/15/2025
+2025-09-28 00:57:28,281 - ERROR - Failed to generate report for 4141 - CSLL on 09/15/2025: Target page, context or browser has been closed
+2025-09-28 00:57:29,288 - INFO - Generating report for 4141 - CSLL from 09/16/2025 to 09/16/2025
+2025-09-28 00:57:29,290 - ERROR - Failed to generate report for 4141 - CSLL on 09/16/2025: Target page, context or browser has been closed
+2025-09-28 00:57:30,305 - INFO - Generating report for 4141 - CSLL from 09/17/2025 to 09/17/2025
+2025-09-28 00:57:30,307 - ERROR - Failed to generate report for 4141 - CSLL on 09/17/2025: Target page, context or browser has been closed
+2025-09-28 00:57:30,964 - INFO - Login successful
+2025-09-28 00:57:30,964 - INFO - Navigating to reports...
+2025-09-28 00:57:31,313 - INFO - Generating report for 4141 - CSLL from 09/18/2025 to 09/18/2025
+2025-09-28 00:57:31,315 - ERROR - Failed to generate report for 4141 - CSLL on 09/18/2025: Target page, context or browser has been closed
+2025-09-28 00:57:32,352 - INFO - Successfully navigated to reports
+2025-09-28 00:57:32,352 - INFO - Extracting account list...
+2025-09-28 00:57:32,392 - INFO - Found 529 accounts
+2025-09-28 00:57:32,393 - INFO - Processing 529 accounts for 30 days = 15870 operations
+2025-09-28 00:57:32,400 - INFO - Skipping already completed account: 4141 - Artemide - Petia Stoykova
+2025-09-28 00:57:32,400 - INFO - Skipping already completed account: 4141 - B&B Italia
+2025-09-28 00:57:32,400 - INFO - Skipping already completed account: 4141 - Biodent Clinic
+2025-09-28 00:57:32,400 - INFO - Skipping already completed account: 4141 - Biohax Intitute
+2025-09-28 00:57:32,400 - INFO - Skipping already completed account: 4141 - CASA BELLA
+2025-09-28 00:57:32,400 - INFO - Skipping already completed account: 4141 - Christies
+2025-09-28 00:57:32,400 - INFO - Processing account: 4141 - CSLL
+2025-09-28 00:57:32,400 - INFO - Generating report for 4141 - CSLL from 09/01/2025 to 09/01/2025
+2025-09-28 00:57:39,591 - ERROR - Failed to navigate to reports: Timeout 30000ms exceeded.
+2025-09-28 00:57:39,591 - ERROR - Failed to navigate to reports, aborting...
+2025-09-28 00:57:39,591 - ERROR - No data collected
+2025-09-28 00:57:39,622 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-2' coro=<Connection.run() done, defined at C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\playwright\_impl\_connection.py:268> exception=OSError(22, 'Invalid argument')>
+Traceback (most recent call last):
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 431, in dispatch
+    object._channel.emit(
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\pyee\base.py", line 208, in emit
+    handled = self._call_handlers(event, args, kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\pyee\base.py", line 184, in _call_handlers
+    self._emit_run(f, args, kwargs)
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\pyee\asyncio.py", line 53, in _emit_run
+    self.emit("error", exc)
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\pyee\base.py", line 211, in emit
+    self._emit_handle_potential_error(event, args[0] if args else None)
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\pyee\base.py", line 169, in _emit_handle_potential_error
+    raise error
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\pyee\asyncio.py", line 51, in _emit_run
+    coro: Any = f(*args, **kwargs)
+                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\playwright\_impl\_page.py", line 159, in <lambda>
+    self._channel.on("close", lambda _: self._on_close())
+                                        ^^^^^^^^^^^^^^^^
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\playwright\_impl\_page.py", line 274, in _on_close
+    self.emit(Page.Events.Close, self)
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\pyee\base.py", line 208, in emit
+    handled = self._call_handlers(event, args, kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\pyee\base.py", line 184, in _call_handlers
+    self._emit_run(f, args, kwargs)
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\pyee\asyncio.py", line 53, in _emit_run
+    self.emit("error", exc)
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\pyee\base.py", line 211, in emit
+    self._emit_handle_potential_error(event, args[0] if args else None)
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\pyee\base.py", line 169, in _emit_handle_potential_error
+    raise error
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\pyee\asyncio.py", line 51, in _emit_run
+    coro: Any = f(*args, **kwargs)
+                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\playwright\_impl\_waiter.py", line 74, in listener
+    self._reject(error() if callable(error) else error)
+                 ^^^^^^^
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\playwright\_impl\_frame.py", line 149, in <lambda>
+    lambda: cast(Page, self._page)._close_error_with_reason(),
+                 ^^^^
+NameError: name 'Page' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 277, in run
+    await self._transport.run()
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\playwright\_impl\_transport.py", line 163, in run
+    self.on_message(obj)
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 236, in <lambda>
+    self._transport.on_message = lambda msg: self.dispatch(msg)
+                                             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pauli\Documents\projects\parking_report_playwright\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 437, in dispatch
+    print("Error occurred in event listener", file=sys.stderr)
+OSError: [Errno 22] Invalid argument
+2025-09-28 00:57:40,490 - INFO - Generating report for 4141 - CSLL from 09/02/2025 to 09/02/2025
+2025-09-28 00:57:48,578 - INFO - Generating report for 4141 - CSLL from 09/03/2025 to 09/03/2025
+2025-09-28 00:57:56,651 - INFO - Generating report for 4141 - CSLL from 09/04/2025 to 09/04/2025
+2025-09-28 00:58:04,844 - INFO - Generating report for 4141 - CSLL from 09/05/2025 to 09/05/2025
+2025-09-28 00:58:12,992 - INFO - Generating report for 4141 - CSLL from 09/06/2025 to 09/06/2025
+2025-09-28 00:58:21,112 - INFO - Generating report for 4141 - CSLL from 09/07/2025 to 09/07/2025
+2025-09-28 00:58:29,276 - INFO - Generating report for 4141 - CSLL from 09/08/2025 to 09/08/2025
+2025-09-28 00:58:37,444 - INFO - Generating report for 4141 - CSLL from 09/09/2025 to 09/09/2025
+2025-09-28 00:58:45,637 - INFO - Generating report for 4141 - CSLL from 09/10/2025 to 09/10/2025
+2025-09-28 00:58:53,763 - INFO - Generating report for 4141 - CSLL from 09/11/2025 to 09/11/2025
+2025-09-28 00:59:01,909 - INFO - Generating report for 4141 - CSLL from 09/12/2025 to 09/12/2025
+2025-09-28 00:59:10,007 - INFO - Generating report for 4141 - CSLL from 09/13/2025 to 09/13/2025
+2025-09-28 00:59:18,168 - INFO - Generating report for 4141 - CSLL from 09/14/2025 to 09/14/2025
+2025-09-28 00:59:26,317 - INFO - Generating report for 4141 - CSLL from 09/15/2025 to 09/15/2025
+2025-09-28 00:59:34,518 - INFO - Generating report for 4141 - CSLL from 09/16/2025 to 09/16/2025
+2025-09-28 00:59:42,744 - INFO - Generating report for 4141 - CSLL from 09/17/2025 to 09/17/2025
+2025-09-28 00:59:50,964 - INFO - Generating report for 4141 - CSLL from 09/18/2025 to 09/18/2025
+2025-09-28 11:15:36,290 - INFO - Browser setup completed
+2025-09-28 11:15:36,290 - INFO - Attempting login...
+2025-09-28 11:15:36,291 - INFO - Browser setup completed
+2025-09-28 11:15:36,291 - INFO - Attempting login...
+2025-09-28 11:15:40,321 - INFO - Login successful
+2025-09-28 11:15:40,321 - INFO - Navigating to reports...
+2025-09-28 11:15:41,464 - INFO - Successfully navigated to reports
+2025-09-28 11:15:41,464 - INFO - Extracting account list...
+2025-09-28 11:15:41,502 - INFO - Found 529 accounts
+2025-09-28 11:15:41,503 - INFO - Processing 529 accounts for 30 days = 15870 operations
+2025-09-28 11:15:41,513 - INFO - Skipping already completed account: 4141 - Artemide - Petia Stoykova
+2025-09-28 11:15:41,513 - INFO - Skipping already completed account: 4141 - B&B Italia
+2025-09-28 11:15:41,513 - INFO - Skipping already completed account: 4141 - Biodent Clinic
+2025-09-28 11:15:41,513 - INFO - Skipping already completed account: 4141 - Biohax Intitute
+2025-09-28 11:15:41,513 - INFO - Skipping already completed account: 4141 - CASA BELLA
+2025-09-28 11:15:41,513 - INFO - Skipping already completed account: 4141 - Christies
+2025-09-28 11:15:41,514 - INFO - Processing account: 4141 - CSLL
+2025-09-28 11:15:41,514 - INFO - Generating report for 4141 - CSLL from 09/01/2025 to 09/01/2025
+2025-09-28 11:15:42,677 - INFO - Login successful
+2025-09-28 11:15:42,677 - INFO - Navigating to reports...
+2025-09-28 11:15:44,269 - INFO - Successfully navigated to reports
+2025-09-28 11:15:44,269 - INFO - Extracting account list...
+2025-09-28 11:15:44,315 - INFO - Found 529 accounts
+2025-09-28 11:15:44,315 - INFO - Processing 529 accounts for 30 days = 15870 operations
+2025-09-28 11:15:49,657 - INFO - Generating report for 4141 - CSLL from 09/02/2025 to 09/02/2025
+2025-09-28 11:15:49,660 - ERROR - Failed to generate report for 4141 - CSLL on 09/02/2025: Target page, context or browser has been closed
+2025-09-28 11:15:50,663 - INFO - Generating report for 4141 - CSLL from 09/03/2025 to 09/03/2025
+2025-09-28 11:15:50,665 - ERROR - Failed to generate report for 4141 - CSLL on 09/03/2025: Target page, context or browser has been closed
+2025-09-28 11:15:51,674 - INFO - Generating report for 4141 - CSLL from 09/04/2025 to 09/04/2025
+2025-09-28 11:15:51,681 - ERROR - Failed to generate report for 4141 - CSLL on 09/04/2025: Target page, context or browser has been closed
+2025-09-28 11:15:52,691 - INFO - Generating report for 4141 - CSLL from 09/05/2025 to 09/05/2025
+2025-09-28 11:15:52,693 - ERROR - Failed to generate report for 4141 - CSLL on 09/05/2025: Target page, context or browser has been closed
+2025-09-28 11:15:53,694 - INFO - Generating report for 4141 - CSLL from 09/06/2025 to 09/06/2025
+2025-09-28 11:15:53,696 - ERROR - Failed to generate report for 4141 - CSLL on 09/06/2025: Target page, context or browser has been closed
+2025-09-28 11:15:54,706 - INFO - Generating report for 4141 - CSLL from 09/07/2025 to 09/07/2025
+2025-09-28 11:15:54,708 - ERROR - Failed to generate report for 4141 - CSLL on 09/07/2025: Target page, context or browser has been closed
+2025-09-28 11:15:55,712 - INFO - Generating report for 4141 - CSLL from 09/08/2025 to 09/08/2025
+2025-09-28 11:15:55,714 - ERROR - Failed to generate report for 4141 - CSLL on 09/08/2025: Target page, context or browser has been closed
+2025-09-28 11:15:56,719 - INFO - Generating report for 4141 - CSLL from 09/09/2025 to 09/09/2025
+2025-09-28 11:15:56,721 - ERROR - Failed to generate report for 4141 - CSLL on 09/09/2025: Target page, context or browser has been closed
+2025-09-28 11:15:57,724 - INFO - Generating report for 4141 - CSLL from 09/10/2025 to 09/10/2025
+2025-09-28 11:15:57,726 - ERROR - Failed to generate report for 4141 - CSLL on 09/10/2025: Target page, context or browser has been closed
+2025-09-28 11:15:58,734 - INFO - Generating report for 4141 - CSLL from 09/11/2025 to 09/11/2025
+2025-09-28 11:15:58,737 - ERROR - Failed to generate report for 4141 - CSLL on 09/11/2025: Target page, context or browser has been closed
+2025-09-28 11:19:17,190 - INFO - Browser setup completed
+2025-09-28 11:19:17,191 - INFO - Attempting login...
+2025-09-28 11:19:20,978 - INFO - Login successful
+2025-09-28 11:19:20,978 - INFO - Navigating to reports...
+2025-09-28 11:19:22,373 - INFO - Successfully navigated to reports
+2025-09-28 11:19:22,373 - INFO - Extracting account list...
+2025-09-28 11:19:22,415 - INFO - Found 529 accounts
+2025-09-28 11:19:22,415 - INFO - Processing 529 accounts for 30 days = 15870 operations
+2025-09-28 11:19:22,421 - INFO - Skipping already completed account: 4141 - Artemide - Petia Stoykova
+2025-09-28 11:19:22,421 - INFO - Skipping already completed account: 4141 - B&B Italia
+2025-09-28 11:19:22,421 - INFO - Skipping already completed account: 4141 - Biodent Clinic
+2025-09-28 11:19:22,421 - INFO - Skipping already completed account: 4141 - Biohax Intitute
+2025-09-28 11:19:22,421 - INFO - Skipping already completed account: 4141 - CASA BELLA
+2025-09-28 11:19:22,421 - INFO - Skipping already completed account: 4141 - Christies
+2025-09-28 11:19:22,421 - INFO - Processing account: 4141 - CSLL
+2025-09-28 11:19:22,421 - INFO - Generating report for 4141 - CSLL from 09/01/2025 to 09/01/2025
+2025-09-28 11:19:30,509 - INFO - Generating report for 4141 - CSLL from 09/02/2025 to 09/02/2025
+2025-09-28 11:19:38,644 - INFO - Generating report for 4141 - CSLL from 09/03/2025 to 09/03/2025
+2025-09-28 11:19:46,842 - INFO - Generating report for 4141 - CSLL from 09/04/2025 to 09/04/2025
+2025-09-28 11:19:55,027 - INFO - Generating report for 4141 - CSLL from 09/05/2025 to 09/05/2025
+2025-09-28 11:20:03,073 - INFO - Generating report for 4141 - CSLL from 09/06/2025 to 09/06/2025
+2025-09-28 11:20:11,136 - INFO - Generating report for 4141 - CSLL from 09/07/2025 to 09/07/2025
+2025-09-28 11:20:19,190 - INFO - Generating report for 4141 - CSLL from 09/08/2025 to 09/08/2025
+2025-09-28 11:20:27,212 - INFO - Generating report for 4141 - CSLL from 09/09/2025 to 09/09/2025
+2025-09-28 11:20:35,259 - INFO - Generating report for 4141 - CSLL from 09/10/2025 to 09/10/2025
+2025-09-28 11:20:43,387 - INFO - Generating report for 4141 - CSLL from 09/11/2025 to 09/11/2025
+2025-09-28 11:20:51,415 - INFO - Generating report for 4141 - CSLL from 09/12/2025 to 09/12/2025
+2025-09-28 11:20:59,416 - INFO - Generating report for 4141 - CSLL from 09/13/2025 to 09/13/2025
+2025-09-28 11:21:07,495 - INFO - Generating report for 4141 - CSLL from 09/14/2025 to 09/14/2025
+2025-09-28 11:21:15,573 - INFO - Generating report for 4141 - CSLL from 09/15/2025 to 09/15/2025
+2025-09-28 11:21:23,661 - INFO - Generating report for 4141 - CSLL from 09/16/2025 to 09/16/2025
+2025-09-28 11:21:31,737 - INFO - Generating report for 4141 - CSLL from 09/17/2025 to 09/17/2025
+2025-09-28 11:21:39,800 - INFO - Generating report for 4141 - CSLL from 09/18/2025 to 09/18/2025
+2025-09-28 11:27:22,401 - INFO - Browser setup completed
+2025-09-28 11:27:22,401 - INFO - Attempting login...
+2025-09-28 11:27:24,040 - ERROR - Login failed: Target page, context or browser has been closed
+2025-09-28 11:27:24,040 - ERROR - Login failed, aborting...
+2025-09-28 11:27:24,040 - ERROR - No data collected

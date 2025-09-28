@@ -24,3 +24,6 @@ FILES:
 REQUIREMENTS:
 - Windows 10 or later
 - Internet connection for first-time setup
+
+daniel.borja
+Daesbo1621$
