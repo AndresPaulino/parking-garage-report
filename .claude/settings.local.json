@@ -2,7 +2,15 @@
   "permissions": {
     "allow": [
       "Bash(python:*)",
-      "Bash(pip install:*)"
+      "Bash(pip install:*)",
+      "Bash(playwright install:*)",
+      "Bash(tasklist)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)",
+      "Bash(wmic process:*)",
+      "Bash(dir:*)",
+      "Bash(forfiles:*)",
+      "Bash(powershell:*)"
     ],
     "deny": [],
     "ask": []
