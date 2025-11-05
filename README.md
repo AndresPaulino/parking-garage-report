@@ -1,223 +1,403 @@
-# Parking Report Automation Setup Guide
+# Parking Report Automation
+
+Automated tool for extracting parking garage reports from Parkonect (https://secure.parkonect.com) for multiple client accounts. Processes 600+ accounts with intelligent batch processing, automatic browser recovery, and real-time data persistence.
+
+## Features
+
+- **Automatic Account Discovery**: Detects all available accounts from the Parkonect dropdown automatically
+- **Batch Processing**: Processes accounts in batches of 25 with automatic browser restart for stability
+- **Real-time Excel Export**: Writes data to Excel immediately after each account is processed
+- **Progress Tracking**: Creates JSON backup files to enable resume capability
+- **Resume Capability**: Can resume exactly where it left off if interrupted or crashed
+- **Browser Health Monitoring**: Automatically restarts browser based on time, operations, and memory usage
+- **Automatic Recovery**: Detects and recovers from browser crashes automatically
+- **Progress Bar**: Visual progress indicator with tqdm
+- **Email Notifications**: Optional email alerts when processing completes
 
 ## Prerequisites
 
 - Python 3.8 or higher
-- Chrome/Chromium browser
+- Chrome/Chromium browser (installed automatically via Playwright)
 
 ## Installation
 
-1. **Clone/Download the script files:**
-   - `parking_report_automation.py` (main script)
-   - `requirements.txt` (dependencies)
+### 1. Clone or download the repository
 
-2. **Create a virtual environment (recommended):**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+```bash
+cd parking-garage-report
+```
 
-3. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 2. Create a virtual environment (recommended)
 
-4. **Install Playwright browsers:**
-   ```bash
-   playwright install chromium
-   ```
+```bash
+python -m venv venv
+
+# On macOS/Linux:
+source venv/bin/activate
+
+# On Windows:
+venv\Scripts\activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Install Playwright browsers
+
+```bash
+playwright install chromium
+```
 
 ## Configuration
 
-### Update the script with your specific selectors:
+Create a `login.txt` file with your Parkonect credentials (already exists in the project):
 
-Before running, you need to update these items in `parking_report_automation.py`:
-
-1. **Base URL** (line ~35):
-   ```python
-   self.base_url = "https://your-actual-site.com"
-   ```
-
-2. **Login selectors** (lines ~60-65):
-   - Update the username input selector
-   - Update the password input selector
-   - Update the login button selector
-   - Update the post-login element selector
-
-3. **Report page URL** (line ~85):
-   ```python
-   await self.page.goto(f"{self.base_url}/reports/monthly-count")
-   ```
-
-4. **Form selectors** (various lines):
-   - Garage dropdown: `select#garage`
-   - Account dropdown: `select#account`
-   - Start date input: `input#start-date`
-   - End date input: `input#end-date`
-   - Generate report button: `button#generate-report`
-   - Report table: `table`
+```
+username=your_username
+password=your_password
+```
 
 ## Usage
 
-### Basic usage (current month):
+### Basic Usage
+
+Process all accounts for the current month:
+
 ```bash
-python parking_report_automation.py --username YOUR_USERNAME --password YOUR_PASSWORD
+python enhanced_parking_automation.py --username YOUR_USERNAME --password YOUR_PASSWORD
 ```
 
-### Specific month:
+### Specific Month and Year
+
 ```bash
-python parking_report_automation.py --username YOUR_USERNAME --password YOUR_PASSWORD --year 2025 --month 9
+python enhanced_parking_automation.py \
+  --username YOUR_USERNAME \
+  --password YOUR_PASSWORD \
+  --year 2025 \
+  --month 10
 ```
 
-### Process specific accounts only:
+### Specific Date Range
+
+Process only specific days within a month:
+
 ```bash
-python parking_report_automation.py --username YOUR_USERNAME --password YOUR_PASSWORD --accounts "Account1" "Account2"
+python enhanced_parking_automation.py \
+  --username YOUR_USERNAME \
+  --password YOUR_PASSWORD \
+  --year 2025 \
+  --month 10 \
+  --start-day 1 \
+  --end-day 15
 ```
 
-### Run in headless mode (no browser window):
+### Resume from Interruption
+
+If the script crashes or is stopped, resume from where it left off:
+
 ```bash
-python parking_report_automation.py --username YOUR_USERNAME --password YOUR_PASSWORD --headless
+python enhanced_parking_automation.py \
+  --username YOUR_USERNAME \
+  --password YOUR_PASSWORD \
+  --resume
 ```
 
-### Custom output filename:
+### Process Specific Accounts Only
+
 ```bash
-python parking_report_automation.py --username YOUR_USERNAME --password YOUR_PASSWORD --output september_reports.xlsx
+python enhanced_parking_automation.py \
+  --username YOUR_USERNAME \
+  --password YOUR_PASSWORD \
+  --accounts "Account Name 1" "Account Name 2"
 ```
 
-# Process just 3 days (1st to 3rd)
-python enhanced_parking_automation.py --username USER --password PASS --year 2025 --month 9 --start-day 1 --end-day 3
+### Headless Mode
 
-# Process ALL accounts with progress bar
-python enhanced_parking_automation.py --username USER --password PASS
+Run without displaying the browser window (recommended for overnight runs):
 
-# Resume if interrupted
-python enhanced_parking_automation.py --username USER --password PASS --resume
-
-# With email notification
-python enhanced_parking_automation.py --username USER --password PASS --email-to recipient@email.com --email-from sender@gmail.com --email-password app-password
-
-### Full example with all options:
 ```bash
-python parking_report_automation.py \
-    --username YOUR_USERNAME \
-    --password YOUR_PASSWORD \
-    --year 2025 \
-    --month 9 \
-    --output parking_sept_2025.xlsx \
-    --headless \
-    --accounts "Company ABC" "Company XYZ"
+python enhanced_parking_automation.py \
+  --username YOUR_USERNAME \
+  --password YOUR_PASSWORD \
+  --headless
 ```
 
-## Using Environment Variables (Recommended for Security)
+### Custom Output Filename
 
-Create a `.env` file:
-```
-PARKING_USERNAME=your_username
-PARKING_PASSWORD=your_password
-```
-
-Then create a wrapper script `run_reports.py`:
-```python
-import os
-from dotenv import load_dotenv
-import subprocess
-import sys
-
-load_dotenv()
-
-username = os.getenv('PARKING_USERNAME')
-password = os.getenv('PARKING_PASSWORD')
-
-# Pass along any additional command line arguments
-additional_args = sys.argv[1:]
-
-cmd = [
-    'python', 'parking_report_automation.py',
-    '--username', username,
-    '--password', password
-] + additional_args
-
-subprocess.run(cmd)
-```
-
-Then run:
 ```bash
-python run_reports.py --year 2025 --month 9
+python enhanced_parking_automation.py \
+  --username YOUR_USERNAME \
+  --password YOUR_PASSWORD \
+  --output october_2025_reports.xlsx
 ```
 
-## Output
+### Email Notification
 
-The script generates:
-1. **Excel file** (`parking_reports.xlsx` by default) with:
-   - One sheet per account
-   - Each sheet contains all days of the month
-   - Columns: Date, Start Time, End Time, Entries, Exits, Manual Adjustments
+Receive an email when processing completes:
 
-2. **Log file** (`parking_report_errors.log`) containing:
-   - Processing progress
-   - Any errors encountered
-   - Accounts/dates that failed
+```bash
+python enhanced_parking_automation.py \
+  --username YOUR_USERNAME \
+  --password YOUR_PASSWORD \
+  --email-to recipient@email.com \
+  --email-from sender@gmail.com \
+  --email-password your_app_password
+```
+
+### Full Example
+
+```bash
+python enhanced_parking_automation.py \
+  --username YOUR_USERNAME \
+  --password YOUR_PASSWORD \
+  --year 2025 \
+  --month 10 \
+  --start-day 1 \
+  --end-day 31 \
+  --output october_reports.xlsx \
+  --headless \
+  --email-to your@email.com \
+  --email-from sender@gmail.com \
+  --email-password app_password
+```
+
+## Command Line Arguments
+
+| Argument | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `--username` | Yes | - | Parkonect login username |
+| `--password` | Yes | - | Parkonect login password |
+| `--year` | No | Current year | Year to process reports for |
+| `--month` | No | Current month | Month to process (1-12) |
+| `--start-day` | No | 1 | First day of date range |
+| `--end-day` | No | Last day of month | Last day of date range |
+| `--output` | No | `parking_reports.xlsx` | Output Excel filename |
+| `--headless` | No | False | Run browser in headless mode |
+| `--accounts` | No | All accounts | Specific account names to process |
+| `--resume` | No | False | Resume from last saved progress |
+| `--batch-size` | No | 25 | Accounts per batch (browser restart) |
+| `--email-to` | No | - | Recipient email for notifications |
+| `--email-from` | No | - | Sender email for notifications |
+| `--email-password` | No | - | Email password for notifications |
+
+## Output Files
+
+### 1. Excel Report (`parking_reports.xlsx`)
+
+- One sheet per account
+- Columns: `date`, `start_time`, `end_time`, `entries`, `exits`, `manual_adjustments`
+- Numeric values formatted as integers
+- Auto-sized columns for readability
+- Written in real-time as each account completes
+
+### 2. Progress File (`automation_progress.json`)
+
+- Tracks which accounts have been completed
+- Tracks current batch number
+- Enables resume capability
+- Automatically deleted when processing is 95%+ complete
+
+### 3. Data Backup (`collected_data.json`)
+
+- JSON backup of all collected data
+- Updated after each account completes
+- Can be used to regenerate Excel if needed
+
+### 4. Error Log (`parking_report_errors.log`)
+
+- Detailed logging of all operations
+- Error messages and stack traces
+- Processing timestamps
+- Browser restart events
+
+## How It Works
+
+### 1. Automatic Account Discovery
+
+The script logs into Parkonect and automatically extracts all available accounts from the dropdown menu on the Monthly Count Report page.
+
+### 2. Batch Processing
+
+Accounts are split into batches of 25. After each batch:
+- Browser is closed and restarted fresh
+- Prevents memory leaks and connection issues
+- Ensures stability for overnight runs
+
+### 3. Browser Health Monitoring
+
+The script monitors browser health and restarts when:
+- More than 45 minutes of uptime
+- More than 300 operations completed
+- Memory usage exceeds 1.5GB (if psutil installed)
+
+### 4. Real-time Data Persistence
+
+After each account is processed:
+- Data is immediately written to Excel (one sheet per account)
+- JSON backup is updated with all data collected so far
+- Progress file is updated with completed account names
+
+### 5. Resume Capability
+
+If the script stops or crashes:
+1. Run with `--resume` flag
+2. Loads previous progress from `automation_progress.json`
+3. Loads previously collected data from `collected_data.json`
+4. Skips completed batches and accounts
+5. Continues exactly where it left off
+
+## Architecture
+
+### Key Classes
+
+**`BrowserHealthMonitor`**
+- Monitors browser uptime, operation count, and memory usage
+- Determines when browser should be restarted proactively
+
+**`EnhancedParkingAutomation`**
+- Main automation class
+- Handles login, navigation, data extraction
+- Manages batch processing and progress tracking
+- Implements automatic recovery mechanisms
+
+### Key Methods
+
+- `get_account_list()`: Auto-discovers accounts from dropdown
+- `process_all_reports()`: Main processing loop with batch management
+- `generate_report_with_recovery()`: Generates report with automatic retry
+- `save_account_to_excel()`: Real-time Excel export per account
+- `ensure_browser_alive()`: Detects and recovers from browser crashes
+- `split_accounts_into_batches()`: Divides accounts into manageable batches
 
 ## Troubleshooting
 
-### Common Issues:
+### Script Crashes After Processing Several Accounts
 
-1. **Login fails:**
-   - Verify credentials
-   - Check login selectors match your site
-   - Try running without `--headless` to see what's happening
+This is handled automatically! The script:
+- Restarts the browser every 25 accounts
+- Monitors browser health proactively
+- Automatically recovers from browser crashes
+- Saves progress continuously
 
-2. **No data extracted:**
-   - Verify table selectors
-   - Increase wait time after clicking "Generate Report"
-   - Check if the site structure has changed
+Just run with `--resume` to continue.
 
-3. **Rate limiting:**
-   - Increase delays between requests in the script
-   - Process fewer accounts at a time
+### Login Fails
 
-4. **Selector not found errors:**
-   - Use browser developer tools to find correct selectors
-   - Update selectors in the script
+- Verify credentials in `login.txt` or command line
+- Check if Parkonect site is accessible
+- Run without `--headless` to see what's happening
+- Check `parking_report_errors.log` for details
 
-### Debugging Tips:
+### Progress Bar Not Moving
 
-1. **Run without headless mode** to see the browser:
-   ```bash
-   python parking_report_automation.py --username USER --password PASS
-   ```
+- Check `parking_report_errors.log` for errors
+- Verify you have access to the accounts
+- Run without `--headless` to observe browser behavior
 
-2. **Check the error log** for specific issues:
-   ```bash
-   tail -f parking_report_errors.log
-   ```
+### Excel File Not Generated
 
-3. **Test with a single account first:**
-   ```bash
-   python parking_report_automation.py --username USER --password PASS --accounts "Test Account"
-   ```
+- Check file permissions in the directory
+- Verify `openpyxl` is installed: `pip install openpyxl`
+- Check `parking_report_errors.log` for write errors
 
-## Customization
+### Script Stops Responding
 
-### To add rate limiting:
-In `process_all_reports()` method, increase the delay:
-```python
-await asyncio.sleep(3)  # Increase from 1 to 3 seconds
+- Press Ctrl+C to stop gracefully
+- Run again with `--resume` to continue
+- Consider running in smaller date ranges
+
+### Memory Issues
+
+Install `psutil` for better memory monitoring:
+
+```bash
+pip install psutil
 ```
 
-### To change which columns are extracted:
-Modify the `extract_table_data()` method to include/exclude columns as needed.
+## Performance
 
-### To change the date format:
-Modify the `get_date_range()` method's strftime format.
+- **Processing Speed**: ~2-3 seconds per account per day
+- **Batch Size**: 25 accounts per browser session (configurable)
+- **Browser Restart**: Every 45 minutes or 300 operations
+- **Expected Runtime**:
+  - 100 accounts × 30 days = ~2-3 hours
+  - 600 accounts × 30 days = ~12-18 hours
 
-## Next Steps
+## Best Practices
 
-After initial setup and testing:
+### For Overnight Runs
 
-1. **Get the HTML selectors** from your site using browser developer tools
-2. **Update all selectors** in the script
-3. **Test with one account** for one day first
-4. **Gradually increase** to full month and all accounts
-5. **Monitor for any rate limiting** or blocking
-6. **Schedule regular runs** using cron (Linux/Mac) or Task Scheduler (Windows) if needed
+1. Use `--headless` mode
+2. Run in a `screen` or `tmux` session (Linux/Mac) or keep terminal open (Windows)
+3. Use `--resume` if you need to restart
+4. Consider using `--email-to` for completion notifications
+
+Example:
+
+```bash
+# Run in background with headless mode
+nohup python enhanced_parking_automation.py \
+  --username USER \
+  --password PASS \
+  --year 2025 \
+  --month 10 \
+  --headless \
+  --email-to your@email.com \
+  --email-from sender@gmail.com \
+  --email-password app_pass \
+  > output.log 2>&1 &
+```
+
+### For Testing
+
+1. Test with a small date range first:
+   ```bash
+   python enhanced_parking_automation.py \
+     --username USER --password PASS \
+     --start-day 1 --end-day 3
+   ```
+
+2. Test with specific accounts:
+   ```bash
+   python enhanced_parking_automation.py \
+     --username USER --password PASS \
+     --accounts "Test Account"
+   ```
+
+3. Monitor the browser (without headless) to see what's happening
+
+## Project Structure
+
+```
+parking-garage-report/
+├── enhanced_parking_automation.py   # Main script
+├── requirements.txt                 # Python dependencies
+├── login.txt                        # Credentials (gitignored)
+├── claude.md                        # Development documentation
+├── README.md                        # This file
+├── parking_reports.xlsx             # Output (auto-generated)
+├── automation_progress.json         # Progress tracking (auto-generated)
+├── collected_data.json              # Data backup (auto-generated)
+└── parking_report_errors.log        # Error log (auto-generated)
+```
+
+## Security Notes
+
+- Never commit `login.txt` to version control
+- Use environment variables for credentials in production
+- Consider using app-specific passwords for email notifications
+- The `.gitignore` file already excludes sensitive files
+
+## License
+
+This project is for internal use only.
+
+## Support
+
+For issues or questions:
+1. Check `parking_report_errors.log` for detailed error messages
+2. Review this README for usage examples
+3. Check `claude.md` for development documentation
