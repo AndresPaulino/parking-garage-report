@@ -10,7 +10,8 @@
       "Bash(wmic process:*)",
       "Bash(dir:*)",
       "Bash(forfiles:*)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": []
