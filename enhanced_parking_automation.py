@@ -138,13 +138,13 @@ class EnhancedParkingAutomation:
             df = pd.DataFrame(account_data)
 
             # Convert numeric columns to integers
-            numeric_columns = ['entries', 'exits', 'manual_adjustments']
+            numeric_columns = ['entries', 'exits', 'manual_adjustments', 'net_movement', 'occupancy']
             for col in numeric_columns:
                 if col in df.columns:
                     df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0).astype(int)
 
             # Reorder columns
-            column_order = ['date', 'start_time', 'end_time', 'entries', 'exits', 'manual_adjustments']
+            column_order = ['date', 'start_time', 'end_time', 'entries', 'exits', 'manual_adjustments', 'net_movement', 'occupancy']
             df = df[column_order]
 
             # Clean sheet name
@@ -458,26 +458,26 @@ class EnhancedParkingAutomation:
     async def extract_table_data(self) -> Optional[List[Dict]]:
         """
         Extract data from the report table
-        
+
         Returns:
             List of dictionaries containing row data
         """
         try:
             # Wait for table to be present
             await self.page.wait_for_selector('table', timeout=10000)
-            
+
             # Extract table data using JavaScript
             table_data = await self.page.evaluate('''
                 () => {
                     const table = document.querySelector('table');
                     const rows = Array.from(table.querySelectorAll('tr'));
-                    
+
                     // Skip header row and totals row
                     const dataRows = rows.slice(1, -1);
-                    
+
                     return dataRows.map(row => {
                         const cells = Array.from(row.querySelectorAll('td'));
-                        
+
                         // Extract text content, handling both plain text and hyperlinks
                         const getText = (cell) => {
                             if (!cell) return '';
@@ -485,20 +485,22 @@ class EnhancedParkingAutomation:
                             const link = cell.querySelector('a');
                             return link ? link.innerText.trim() : cell.innerText.trim();
                         };
-                        
+
                         return {
                             start_time: getText(cells[0]),
                             end_time: getText(cells[1]),
                             entries: getText(cells[2]) || '0',
                             exits: getText(cells[3]) || '0',
-                            manual_adjustments: getText(cells[4]) || '0'
+                            manual_adjustments: getText(cells[4]) || '0',
+                            net_movement: getText(cells[5]) || '0',
+                            occupancy: getText(cells[6]) || '0'
                         };
                     });
                 }
             ''')
-            
+
             return table_data
-            
+
         except Exception as e:
             logger.error(f"Failed to extract table data: {str(e)}")
             return None
@@ -724,30 +726,30 @@ class EnhancedParkingAutomation:
     def export_to_excel(self, data: Dict, output_file: str = "parking_reports.xlsx"):
         """
         Export collected data to Excel file with proper number formatting
-        
+
         Args:
             data: Dictionary with account names as keys and data lists as values
             output_file: Output Excel filename
         """
         try:
             logger.info(f"Exporting data to {output_file}")
-            
+
             with pd.ExcelWriter(output_file, engine='openpyxl') as writer:
                 for account_name, account_data in data.items():
                     if account_data:
                         # Create DataFrame
                         df = pd.DataFrame(account_data)
-                        
+
                         # Convert numeric columns to integers
-                        numeric_columns = ['entries', 'exits', 'manual_adjustments']
+                        numeric_columns = ['entries', 'exits', 'manual_adjustments', 'net_movement', 'occupancy']
                         for col in numeric_columns:
                             if col in df.columns:
                                 # Convert to numeric, handling any non-numeric values
                                 df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0).astype(int)
-                        
+
                         # Reorder columns
-                        column_order = ['date', 'start_time', 'end_time', 
-                                      'entries', 'exits', 'manual_adjustments']
+                        column_order = ['date', 'start_time', 'end_time',
+                                      'entries', 'exits', 'manual_adjustments', 'net_movement', 'occupancy']
                         df = df[column_order]
                         
                         # Clean sheet name (Excel has limitations on sheet names)
