@@ -242,31 +242,33 @@ class EnhancedParkingAutomation:
         try:
             logger.info("Attempting login...")
             await self.page.goto(f"{self.base_url}/Admin/Login.aspx")
-            
+
             # Step 1: Enter username and click Continue
             await self.page.fill('#txtUserName', self.username)
-            
+
             # Click Continue button (selecting by value since ID is same as login)
             await self.page.click('input[value="Continue"]')
-            
-            # Wait for password field to appear
+
+            # Wait for username and password fields to appear (page reloads)
+            await self.page.wait_for_selector('#txtUserName', timeout=5000)
             await self.page.wait_for_selector('#txtPassword', timeout=5000)
-            
-            # Step 2: Enter password
+
+            # Step 2: Enter username again and password
+            await self.page.fill('#txtUserName', self.username)
             await self.page.fill('#txtPassword', self.password)
-            
+
             # Click Login button
             await self.page.click('input[value="Log in"]')
-            
+
             # Wait for navigation to complete
             await self.page.wait_for_load_state('networkidle')
-            
+
             # Verify login by checking URL or element
             await self.page.wait_for_url('**/Admin/**', timeout=10000)
-            
+
             logger.info("Login successful")
             return True
-            
+
         except Exception as e:
             logger.error(f"Login failed: {str(e)}")
             return False
