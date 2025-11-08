@@ -11,7 +11,11 @@
       "Bash(dir:*)",
       "Bash(forfiles:*)",
       "Bash(powershell:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(python3:*)",
+      "Bash(source .venv/bin/activate)",
+      "Bash(/Library/Frameworks/Python.framework/Versions/3.11/bin/python3:*)",
+      "Bash(chmod:*)"
     ],
     "deny": [],
     "ask": []

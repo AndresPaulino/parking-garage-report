@@ -1,0 +1,18 @@
+{
+  "remember_credentials": true,
+  "encrypted_credentials": "Z0FBQUFBQnBEclpnTlpQeDY5NUlxc214ZE0yZkJFZGhrclZja01HNXc2WEpvcVROZGlVSTV0S3pJT0FCZUpNNHBVQzVSSHdKcndnd1dyU01iOEdUYWtuQzV3eXQ1YktRTHVGd09EU3F6dDVPQjYwcnNQVzdpRjQ9",
+  "selected_garage": "",
+  "year": 2025,
+  "month": 11,
+  "start_day": 1,
+  "end_day": 31,
+  "output_file": "parking_reports.xlsx",
+  "batch_size": 25,
+  "headless": false,
+  "resume": false,
+  "email_enabled": false,
+  "email_to": "",
+  "email_from": "",
+  "save_preferences": false,
+  "last_run": null
+}
