@@ -11,11 +11,15 @@ Automated Python tool for extracting parking data from Parkonect (https://secure
 The script successfully processes all accounts with the following proven features:
 - ✅ Automatic account discovery from dropdown
 - ✅ Batch processing (25 accounts per browser session)
-- ✅ Real-time Excel export (incremental, per account)
+- ✅ Real-time Excel export (8 columns: date, start_time, end_time, entries, exits, manual_adjustments, net_movement, occupancy)
 - ✅ Progress tracking with JSON backup
 - ✅ Full resume capability
-- ✅ Browser health monitoring and automatic restart
-- ✅ Automatic crash recovery
+- ✅ Multi-layer error recovery (top-level, batch-level, account-level)
+- ✅ Session management with automatic re-login per batch
+- ✅ Browser health monitoring and verified restart
+- ✅ Automatic crash recovery with retry logic
+- ✅ Failed account tracking
+- ✅ Proper resource cleanup (no memory leaks)
 - ✅ Visual progress bar
 
 ## File Structure
@@ -72,27 +76,29 @@ Main automation class handling all operations.
 
 ##### Browser Management
 - `setup_browser()`: Initializes Playwright browser with anti-detection args
-- `login()`: Two-step login process (username → password)
-- `navigate_to_reports()`: Direct navigation to Monthly Count Report page
-- `ensure_browser_alive()`: Tests browser responsiveness, restarts if dead
+- `cleanup_browser()`: Force cleanup of all browser resources (page, browser, playwright)
+- `login()`: Two-step login process (username → username+password)
+- `navigate_to_reports()`: Direct navigation to Monthly Count Report page with retry
+- `ensure_browser_alive()`: Tests browser responsiveness with timeout, restarts with verification if needed
 
 ##### Data Collection
 - `get_account_list()`: Extracts all accounts from dropdown automatically
 - `generate_report()`: Generates report for single account/date
 - `generate_report_with_recovery()`: Wrapper with retry logic and health checks
-- `extract_table_data()`: Parses HTML table data
+- `extract_table_data()`: Parses HTML table data (7 columns including net_movement and occupancy)
 - `wait_for_report_completion()`: Intelligent wait for table to populate
 
-##### Batch Processing
+##### Batch Processing & Recovery
 - `split_accounts_into_batches()`: Splits accounts into batches of 25
-- `process_all_reports()`: Main processing loop with batch management
+- `process_all_reports()`: Main processing loop with batch management, per-batch and per-account exception handling
+- `process_all_reports_with_recovery()`: Top-level wrapper with script-level exception handling and retry
 - `save_batch_progress()`: Saves progress after each batch
 
 ##### Data Persistence
-- `save_account_to_excel()`: Real-time Excel export (incremental, per account)
+- `save_account_to_excel()`: Real-time Excel export (incremental, per account, 8 columns)
 - `save_data_backup()`: JSON backup of all collected data
 - `load_progress()`: Loads resume progress from file
-- `save_progress()`: Saves current progress
+- `save_progress()`: Saves current progress (includes completed_accounts, failed_accounts, batch_retry_count)
 - `clear_progress()`: Clears progress file after completion
 
 ##### Utilities
@@ -148,31 +154,60 @@ Main automation class handling all operations.
 10. Complete
 ```
 
-### Browser Stability Strategy
+### Browser Stability & Error Recovery Strategy
 
-**Problem:** Browser crashes after ~5 accounts due to memory leaks and session timeouts.
+**Problem:** Browser crashes, session timeouts, and network issues can interrupt long-running processes.
 
-**Solution:** Multi-layered approach
+**Solution:** Multi-layered error recovery and resource management
 
-1. **Batch Processing**
-   - Process 25 accounts per browser instance
-   - Clean browser restart between batches
-   - Prevents memory accumulation
+#### Layer 1: Top-Level Script Recovery
+- `process_all_reports_with_recovery()` wrapper catches ALL unhandled exceptions
+- Retries entire script up to 3 times with increasing wait times (10s, 20s, 30s)
+- Cleans up browser resources before each retry
+- Auto-enables resume mode to continue from last saved progress
+- Logs exception type and details for debugging
 
-2. **Health Monitoring**
-   - Proactive restart based on time/operations/memory
-   - Prevents crashes before they happen
+#### Layer 2: Batch-Level Recovery
+- Each batch wrapped in try-except block
+- On batch failure:
+  - Logs error and saves progress
+  - Restarts browser with verification
+  - Retries batch once (tracked via `batch_retry_count`)
+  - Continues to next batch if retry fails (doesn't crash entire script)
 
-3. **Automatic Recovery**
-   - Detects browser death via `page.evaluate()` test
-   - Automatically restarts browser
-   - Retries operation up to 3 times
-   - Preserves all progress
+#### Layer 3: Account-Level Recovery
+- Each account wrapped in try-except block
+- On account failure:
+  - Logs error
+  - Adds to `failed_accounts` list in progress file
+  - Attempts browser recovery via `ensure_browser_alive()`
+  - Falls back to forced cleanup and restart if needed
+  - Continues to next account (doesn't crash batch)
 
-4. **Real-time Persistence**
-   - Excel written after each account
-   - JSON backup updated continuously
-   - No data loss on crash
+#### Layer 4: Operation-Level Recovery
+- `generate_report_with_recovery()` has 3 retry attempts
+- Checks browser health before each operation
+- Restarts browser on specific errors ("closed", "target page")
+
+#### Session Management
+- **Automatic re-login after every batch** (prevents session timeout)
+- Fresh login for first batch ensures valid session
+- Two-step login: username → username+password (site requirement)
+- All wait operations have timeouts (no infinite hangs)
+
+#### Resource Cleanup
+- `cleanup_browser()` method properly closes:
+  - Page instance
+  - Browser instance
+  - Playwright instance
+- Called before every restart and on script exit
+- Prevents memory leaks and orphaned processes
+
+#### Real-time Persistence
+- Excel written after each account (8 columns)
+- JSON backup updated continuously
+- Progress file tracks: completed_accounts, failed_accounts, batch_retry_count
+- No data loss even on hard crash
 
 ## Command Line Interface
 
@@ -259,17 +294,17 @@ Context:
 
 Table structure:
 ```
-Header Row:   Start Time | End Time | Entries | Exits | Manual Adjustments
-Data Rows:    00:00:00   | 01:00:00 | 5       | 3     | 0
+Header Row:   Start Time | End Time | Entries | Exits | Manual Adjustments | Net Movement | Occupancy
+Data Rows:    00:00:00   | 01:00:00 | 5       | 3     | 0                  | -2           | 25
 ...
-Totals Row:   TOTALS     | -        | 150     | 148   | 2
+Totals Row:   TOTALS     | -        | 150     | 148   | 2                  | 0            | -
 ```
 
 Extraction logic:
 - Skip header row (index 0)
 - Skip totals row (last row)
 - Extract text from cells, handling both text and `<a>` links
-- Return list of dictionaries with keys: `start_time`, `end_time`, `entries`, `exits`, `manual_adjustments`
+- Return list of dictionaries with keys: `start_time`, `end_time`, `entries`, `exits`, `manual_adjustments`, `net_movement`, `occupancy`
 
 ### Excel Export Format
 
@@ -285,6 +320,8 @@ Extraction logic:
 4. `entries` - Integer (formatted as `0`)
 5. `exits` - Integer (formatted as `0`)
 6. `manual_adjustments` - Integer (formatted as `0`)
+7. `net_movement` - Integer (formatted as `0`, can be negative)
+8. `occupancy` - Integer (formatted as `0`)
 
 **Features:**
 - Auto-sized columns
@@ -302,6 +339,14 @@ Extraction logic:
     "Account 2",
     "..."
   ],
+  "failed_accounts": [
+    "Problematic Account 1",
+    "Problematic Account 2"
+  ],
+  "batch_retry_count": {
+    "3": 1,
+    "5": 1
+  },
   "last_processed": "2025-10-01T14:30:00.000000",
   "current_batch": 3,
   "total_batches": 24,

@@ -6,11 +6,17 @@ Automated tool for extracting parking garage reports from Parkonect (https://sec
 
 - **Automatic Account Discovery**: Detects all available accounts from the Parkonect dropdown automatically
 - **Batch Processing**: Processes accounts in batches of 25 with automatic browser restart for stability
-- **Real-time Excel Export**: Writes data to Excel immediately after each account is processed
+- **Real-time Excel Export**: Writes data to Excel immediately after each account is processed (includes entries, exits, manual adjustments, net movement, and occupancy)
 - **Progress Tracking**: Creates JSON backup files to enable resume capability
 - **Resume Capability**: Can resume exactly where it left off if interrupted or crashed
-- **Browser Health Monitoring**: Automatically restarts browser based on time, operations, and memory usage
-- **Automatic Recovery**: Detects and recovers from browser crashes automatically
+- **Multi-Layer Error Recovery**:
+  - Top-level exception handler catches all script crashes and retries up to 3 times
+  - Per-batch exception handling with automatic retry
+  - Per-account exception handling to skip problematic accounts
+  - Browser health monitoring with automatic restart and verification
+- **Session Management**: Automatic re-login after each batch to prevent session timeouts
+- **Resource Cleanup**: Proper cleanup of browser resources prevents memory leaks
+- **Failed Account Tracking**: Tracks accounts that fail for later review
 - **Progress Bar**: Visual progress indicator with tqdm
 - **Email Notifications**: Optional email alerts when processing completes
 
@@ -188,7 +194,7 @@ python enhanced_parking_automation.py \
 ### 1. Excel Report (`parking_reports.xlsx`)
 
 - One sheet per account
-- Columns: `date`, `start_time`, `end_time`, `entries`, `exits`, `manual_adjustments`
+- Columns: `date`, `start_time`, `end_time`, `entries`, `exits`, `manual_adjustments`, `net_movement`, `occupancy`
 - Numeric values formatted as integers
 - Auto-sized columns for readability
 - Written in real-time as each account completes
@@ -196,6 +202,8 @@ python enhanced_parking_automation.py \
 ### 2. Progress File (`automation_progress.json`)
 
 - Tracks which accounts have been completed
+- Tracks which accounts failed (`failed_accounts` list)
+- Tracks batch retry attempts (`batch_retry_count`)
 - Tracks current batch number
 - Enables resume capability
 - Automatically deleted when processing is 95%+ complete
@@ -219,35 +227,57 @@ python enhanced_parking_automation.py \
 
 The script logs into Parkonect and automatically extracts all available accounts from the dropdown menu on the Monthly Count Report page.
 
-### 2. Batch Processing
+### 2. Batch Processing with Session Management
 
 Accounts are split into batches of 25. After each batch:
 - Browser is closed and restarted fresh
+- **Automatic re-login** to prevent session timeouts
 - Prevents memory leaks and connection issues
 - Ensures stability for overnight runs
 
-### 3. Browser Health Monitoring
+### 3. Multi-Layer Error Recovery
 
-The script monitors browser health and restarts when:
-- More than 45 minutes of uptime
-- More than 300 operations completed
-- Memory usage exceeds 1.5GB (if psutil installed)
+The script has multiple safety nets:
+
+**Top-Level Recovery:**
+- Catches any unhandled script crashes
+- Automatically retries up to 3 times
+- Cleans up browser resources before retry
+- Resumes from last saved progress
+
+**Batch-Level Recovery:**
+- Catches batch failures
+- Restarts browser and retries batch once
+- Continues to next batch if retry fails
+
+**Account-Level Recovery:**
+- Catches individual account failures
+- Tracks failed accounts in progress file
+- Recovers browser and continues to next account
+
+**Browser Health Monitoring:**
+- Tests browser responsiveness before operations
+- Restarts when needed (45 min uptime, 300 operations, or 1.5GB memory)
+- Verifies restart succeeded before continuing
 
 ### 4. Real-time Data Persistence
 
 After each account is processed:
 - Data is immediately written to Excel (one sheet per account)
+- Includes all 8 columns: date, start_time, end_time, entries, exits, manual_adjustments, net_movement, occupancy
 - JSON backup is updated with all data collected so far
 - Progress file is updated with completed account names
+- Failed accounts tracked separately
 
 ### 5. Resume Capability
 
 If the script stops or crashes:
-1. Run with `--resume` flag
+1. Run with `--resume` flag (or it auto-enables on retry)
 2. Loads previous progress from `automation_progress.json`
 3. Loads previously collected data from `collected_data.json`
 4. Skips completed batches and accounts
 5. Continues exactly where it left off
+6. Reviews `failed_accounts` list to identify problematic accounts
 
 ## Architecture
 

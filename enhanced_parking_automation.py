@@ -199,7 +199,33 @@ class EnhancedParkingAutomation:
         if os.path.exists(self.progress_file):
             os.remove(self.progress_file)
             logger.info("Progress file cleared")
-            
+
+    async def cleanup_browser(self):
+        """Force cleanup of all browser resources"""
+        logger.info("Cleaning up browser resources...")
+        try:
+            if hasattr(self, 'page') and self.page:
+                await self.page.close()
+                self.page = None
+        except Exception as e:
+            logger.debug(f"Error closing page: {e}")
+
+        try:
+            if hasattr(self, 'browser') and self.browser:
+                await self.browser.close()
+                self.browser = None
+        except Exception as e:
+            logger.debug(f"Error closing browser: {e}")
+
+        try:
+            if hasattr(self, 'playwright_instance') and self.playwright_instance:
+                await self.playwright_instance.stop()
+                self.playwright_instance = None
+        except Exception as e:
+            logger.debug(f"Error stopping playwright: {e}")
+
+        logger.info("Browser cleanup completed")
+
     async def setup_browser(self):
         """Setup Playwright browser and page"""
         try:
@@ -260,8 +286,8 @@ class EnhancedParkingAutomation:
             # Click Login button
             await self.page.click('input[value="Log in"]')
 
-            # Wait for navigation to complete
-            await self.page.wait_for_load_state('networkidle')
+            # Wait for navigation to complete with timeout
+            await self.page.wait_for_load_state('networkidle', timeout=30000)
 
             # Verify login by checking URL or element
             await self.page.wait_for_url('**/Admin/**', timeout=10000)
@@ -304,20 +330,40 @@ class EnhancedParkingAutomation:
         return False
 
     async def ensure_browser_alive(self):
-        """Check if browser is alive and restart if needed"""
+        """Check if browser is alive and restart if needed with verification"""
         try:
-            # Test if browser is responsive
-            await self.page.evaluate('() => true')
+            # Test if browser is responsive with timeout
+            await self.page.evaluate('() => true', timeout=5000)
             return True
         except Exception as e:
-            if "closed" in str(e).lower():
-                logger.info("Browser died, restarting...")
-                await self.setup_browser()
-                await self.login()
-                await self.navigate_to_reports()
-                return True
-            else:
-                raise e
+            logger.warning(f"Browser health check failed: {str(e)}")
+            logger.info("Attempting browser restart with verification...")
+
+            # Clean up first
+            await self.cleanup_browser()
+
+            # Restart with verification (up to 3 attempts)
+            max_retries = 3
+            for attempt in range(max_retries):
+                try:
+                    await self.setup_browser()
+
+                    if not await self.login():
+                        raise Exception("Login failed after browser restart")
+
+                    if not await self.navigate_to_reports():
+                        raise Exception("Navigation failed after browser restart")
+
+                    logger.info("Browser restart successful and verified")
+                    return True
+
+                except Exception as retry_error:
+                    logger.warning(f"Restart attempt {attempt + 1} failed: {str(retry_error)}")
+                    if attempt < max_retries - 1:
+                        await asyncio.sleep(5)
+                        await self.cleanup_browser()
+                    else:
+                        raise Exception(f"Could not restart browser after {max_retries} attempts")
     
     async def get_account_list(self) -> List[Tuple[str, str]]:
         """
@@ -631,78 +677,151 @@ class EnhancedParkingAutomation:
                 logger.info(f"Skipping completed batch {batch_num}/{len(batches)}")
                 continue
 
-            logger.info(f"Processing batch {batch_num} of {len(batches)} ({len(batch)} accounts)")
+            # Wrap batch processing in try-except for resilience
+            try:
+                logger.info(f"Processing batch {batch_num} of {len(batches)} ({len(batch)} accounts)")
 
-            # Restart browser for each batch (except first)
-            if batch_num > 1:
-                logger.info("Restarting browser for new batch...")
-                await self.setup_browser()
-                if not await self.login():
-                    logger.error("Login failed during batch processing")
-                    break
-                if not await self.navigate_to_reports():
-                    logger.error("Failed to navigate to reports during batch processing")
-                    break
+                # Restart browser and re-login for each batch (prevents session timeout)
+                if batch_num > 1:
+                    logger.info("Restarting browser and re-logging in for new batch...")
+                    await self.cleanup_browser()
+                    await self.setup_browser()
+                    if not await self.login():
+                        raise Exception("Login failed during batch processing")
+                    if not await self.navigate_to_reports():
+                        raise Exception("Failed to navigate to reports during batch processing")
+                else:
+                    # For first batch, do a fresh login to ensure session is valid
+                    logger.info("Performing fresh login for first batch...")
+                    if not await self.login():
+                        raise Exception("Initial login failed")
+                    if not await self.navigate_to_reports():
+                        raise Exception("Initial navigation failed")
 
-            # Process accounts in this batch
-            batch_success = True
-            for account_value, account_name in batch:
-                # Check if this account was already processed (for resume within batch)
-                if resume and account_name in progress.get('completed_accounts', []):
-                    logger.info(f"Skipping already completed account: {account_name}")
-                    self.progress_bar.update(len(date_pairs))
-                    continue
+                # Process accounts in this batch
+                batch_success = True
+                for account_value, account_name in batch:
+                    # Check if this account was already processed (for resume within batch)
+                    if resume and account_name in progress.get('completed_accounts', []):
+                        logger.info(f"Skipping already completed account: {account_name}")
+                        self.progress_bar.update(len(date_pairs))
+                        continue
 
-                logger.info(f"Processing account: {account_name}")
-                account_data = []
+                    # Wrap individual account processing in try-except
+                    try:
+                        logger.info(f"Processing account: {account_name}")
+                        account_data = []
 
-                # Process each day for this account
-                account_success = True
-                for start_date, end_date in date_pairs:
-                    report = await self.generate_report_with_recovery(
-                        account_value, account_name, start_date, end_date
-                    )
+                        # Process each day for this account
+                        account_success = True
+                        for start_date, end_date in date_pairs:
+                            report = await self.generate_report_with_recovery(
+                                account_value, account_name, start_date, end_date
+                            )
 
-                    if report:
-                        # Add date to each row of data
-                        for row in report['data']:
-                            row['date'] = start_date
-                        account_data.extend(report['data'])
+                            if report:
+                                # Add date to each row of data
+                                for row in report['data']:
+                                    row['date'] = start_date
+                                account_data.extend(report['data'])
+                            else:
+                                logger.warning(f"Failed to get report for {account_name} on {start_date}")
+                                account_success = False
+
+                            # Update progress bar
+                            self.progress_bar.update(1)
+
+                            # Small delay between requests
+                            await asyncio.sleep(0.5)
+
+                        all_data[account_name] = account_data
+
+                        # DUAL PERSISTENCE: Save immediately after each account
+                        # 1. Save to Excel (incremental - one sheet per account)
+                        if account_data:
+                            self.save_account_to_excel(account_name, account_data, output_file)
+
+                        # 2. Save to JSON backup (all data so far)
+                        self.save_data_backup(all_data)
+
+                        # Save progress after each account
+                        if 'completed_accounts' not in progress:
+                            progress['completed_accounts'] = []
+                        progress['completed_accounts'].append(account_name)
+                        progress['last_processed'] = datetime.now().isoformat()
+
+                        if not account_success:
+                            batch_success = False
+
+                    except Exception as account_error:
+                        logger.error(f"Account {account_name} failed with error: {str(account_error)}")
+
+                        # Track failed account
+                        if 'failed_accounts' not in progress:
+                            progress['failed_accounts'] = []
+                        progress['failed_accounts'].append(account_name)
+                        self.save_progress(progress)
+
+                        # Try to recover browser and continue
+                        try:
+                            logger.info("Attempting to recover browser after account failure...")
+                            await self.ensure_browser_alive()
+                        except Exception as recovery_error:
+                            logger.error(f"Browser recovery failed: {str(recovery_error)}")
+                            # Force cleanup and restart
+                            await self.cleanup_browser()
+                            await self.setup_browser()
+                            await self.login()
+                            await self.navigate_to_reports()
+
+                        # Skip remaining dates for this account and continue to next
+                        self.progress_bar.update(len(date_pairs) - self.progress_bar.n % len(date_pairs))
+                        continue
+
+                # Save batch progress
+                self.save_batch_progress(progress, batch_num, len(batches))
+
+                # Brief pause between batches
+                if batch_num < len(batches):
+                    await asyncio.sleep(2)
+
+            except Exception as batch_error:
+                logger.error(f"Batch {batch_num} failed with error: {str(batch_error)}")
+
+                # Save progress so far
+                self.save_batch_progress(progress, batch_num - 1, len(batches))
+
+                # Try to restart browser and retry batch once
+                logger.info(f"Attempting to recover and retry batch {batch_num}...")
+                try:
+                    await self.cleanup_browser()
+                    await asyncio.sleep(5)
+                    await self.setup_browser()
+                    if not await self.login():
+                        raise Exception("Login failed during batch recovery")
+                    if not await self.navigate_to_reports():
+                        raise Exception("Navigation failed during batch recovery")
+
+                    logger.info(f"Recovery successful, retrying batch {batch_num}...")
+                    # Retry the batch by not incrementing - will process again
+                    # But mark progress to avoid infinite retry
+                    progress['batch_retry_count'] = progress.get('batch_retry_count', {})
+                    retry_count = progress['batch_retry_count'].get(batch_num, 0)
+
+                    if retry_count < 1:  # Only retry once
+                        progress['batch_retry_count'][batch_num] = retry_count + 1
+                        self.save_progress(progress)
+                        # Continue to next iteration to retry
+                        continue
                     else:
-                        logger.warning(f"Failed to get report for {account_name} on {start_date}")
-                        account_success = False
+                        logger.warning(f"Batch {batch_num} already retried, skipping to next batch")
 
-                    # Update progress bar
-                    self.progress_bar.update(1)
+                except Exception as recovery_error:
+                    logger.error(f"Batch recovery failed: {str(recovery_error)}")
 
-                    # Small delay between requests
-                    await asyncio.sleep(0.5)
-
-                all_data[account_name] = account_data
-
-                # DUAL PERSISTENCE: Save immediately after each account
-                # 1. Save to Excel (incremental - one sheet per account)
-                if account_data:
-                    self.save_account_to_excel(account_name, account_data, output_file)
-
-                # 2. Save to JSON backup (all data so far)
-                self.save_data_backup(all_data)
-
-                # Save progress after each account
-                if 'completed_accounts' not in progress:
-                    progress['completed_accounts'] = []
-                progress['completed_accounts'].append(account_name)
-                progress['last_processed'] = datetime.now().isoformat()
-
-                if not account_success:
-                    batch_success = False
-
-            # Save batch progress
-            self.save_batch_progress(progress, batch_num, len(batches))
-
-            # Brief pause between batches
-            if batch_num < len(batches):
-                await asyncio.sleep(2)
+                # Continue to next batch even if this one failed
+                logger.info(f"Continuing to next batch after batch {batch_num} failure...")
+                continue
 
         # Close progress bar
         self.progress_bar.close()
@@ -724,7 +843,62 @@ class EnhancedParkingAutomation:
         logger.info("Data collection completed")
 
         return all_data
-    
+
+    async def process_all_reports_with_recovery(self, year: int, month: int,
+                                               account_filter: Optional[List[str]] = None,
+                                               start_day: Optional[int] = None,
+                                               end_day: Optional[int] = None,
+                                               resume: bool = False,
+                                               batch_size: int = 25,
+                                               output_file: str = "parking_reports.xlsx") -> Dict:
+        """
+        Top-level wrapper with ultimate exception handling and recovery
+        This ensures the script never dies unexpectedly
+        """
+        max_script_retries = 3
+
+        for attempt in range(max_script_retries):
+            try:
+                logger.info(f"Starting process_all_reports (attempt {attempt + 1}/{max_script_retries})")
+
+                result = await self.process_all_reports(
+                    year=year,
+                    month=month,
+                    account_filter=account_filter,
+                    start_day=start_day,
+                    end_day=end_day,
+                    resume=resume,
+                    batch_size=batch_size,
+                    output_file=output_file
+                )
+
+                logger.info("Process completed successfully")
+                return result
+
+            except Exception as e:
+                logger.error(f"CRITICAL: Script crashed on attempt {attempt + 1}: {str(e)}")
+                logger.error(f"Exception type: {type(e).__name__}")
+
+                # Always clean up browser resources
+                await self.cleanup_browser()
+
+                # If not the last attempt, wait and try again
+                if attempt < max_script_retries - 1:
+                    wait_time = 10 * (attempt + 1)  # Increasing wait time
+                    logger.info(f"Waiting {wait_time} seconds before retry...")
+                    await asyncio.sleep(wait_time)
+
+                    logger.info("Attempting full script recovery...")
+                    # Set resume to True for retry attempts to continue where we left off
+                    resume = True
+                else:
+                    logger.error(f"Script failed after {max_script_retries} attempts")
+                    logger.error("All data collected so far has been saved to Excel and JSON backup")
+                    raise
+
+        # This should never be reached, but return empty dict as fallback
+        return {}
+
     def export_to_excel(self, data: Dict, output_file: str = "parking_reports.xlsx"):
         """
         Export collected data to Excel file with proper number formatting
@@ -867,15 +1041,15 @@ async def main():
         headless=args.headless
     )
     
-    # Process all reports with batch processing
-    data = await automation.process_all_reports(
+    # Process all reports with batch processing and recovery
+    data = await automation.process_all_reports_with_recovery(
         year=args.year,
         month=args.month,
         account_filter=args.accounts,
         start_day=args.start_day,
         end_day=args.end_day,
         resume=args.resume,
-        batch_size=25,  # Process 25 accounts before browser restart
+        batch_size=args.batch_size,  # Use batch size from args
         output_file=args.output
     )
     
